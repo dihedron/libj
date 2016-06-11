@@ -36,6 +36,10 @@ namespace java {
         /// toString().
         class Object {
         public:
+
+            /// The shared reference to the Class object for this
+            /// class; all object share the same instance.
+            static const Class klass;            
             
 			/// Default constructor.
             Object() { }
@@ -48,7 +52,12 @@ namespace java {
             Object(const Object & other) { }
 				
             /// Destructor.
-            virtual ~Object() { }
+            ///
+            /// The default destructor does nothing, except invoking
+            /// the finalize() method.
+            virtual ~Object() { 
+                finalize();
+            }
 
             /// Assignment operator.
             ///
@@ -83,7 +92,7 @@ namespace java {
             /// 
             /// Returns the object's class object.
             /// \return the object's class object.
-            inline virtual Class & getClass() const {
+            inline virtual Class const & getClass() const {
                 return Object::klass; 
             }
 
@@ -99,13 +108,12 @@ namespace java {
 
         protected:
                 virtual Object clone() const { }
-                virtual void finalize() { }
-        private:
-            
-            /// The shared reference to the Class object for this
-            /// class; all object share the same instance.
-            static Class klass;
 
+            /// Performs a final cleanup.
+            /// 
+            /// Cleans up any resources associated with this object,
+            /// before its associated memory is recalled.
+            virtual void finalize() { }
         };
     }
 }

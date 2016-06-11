@@ -29,6 +29,9 @@ namespace java {
 		class Integer : public Number {
             public:
 
+                  /// The Integers' Class object.
+                  static const Class klass;                  
+
                   template <typename T> static inline String toHexString(int value);
 
                   /// Default constructor.
@@ -56,6 +59,15 @@ namespace java {
 
                   /// Destructor.
                   virtual ~Integer() { }
+
+                  /// Returns this Integer's class object.
+                  ///
+                  /// Returns this Integer's class object; the returned object
+                  /// is shared among all instances.
+                  /// \return the Class object.
+                  inline virtual Class const & getClass() const {
+                      return Integer::klass; 
+                  }                  
 
                   /// Returns the value of the specified number as a byte.
                   /// 
@@ -105,13 +117,6 @@ namespace java {
                   /// conversion to type short.
                   virtual short shortValue() const;
 
-                  /// Returns this Integer's class object.
-                  ///
-                  /// Returns this Integer's class object; the returned object
-                  /// is shared among all instances.
-                  /// \return the Class object.
-                  virtual Class & getClass() const;
-
                   /// Returns the 
                   virtual String toString() const;
 
@@ -129,8 +134,6 @@ namespace java {
             private:
                   int value_;
 
-                  /// The Integers' Class object.
-                  static Class klass;
             };
 
             template <typename T> 

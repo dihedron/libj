@@ -1,5 +1,5 @@
 /*
- * Integer.h
+ * Number.h
  * Copyright (C) 2016 Andrea Funto' <dihedron.dev@gmail.com>
  *
  * libj is free software: you can redistribute it and/or modify it
@@ -26,9 +26,12 @@
 #include <iomanip>
 
 namespace java {
-	namespace lang {
+      namespace lang {
 		class Number : public Object {
             public:
+                  /// The Numbers' Class object.
+                  static const Class klass;
+
                   /// Default constructor.
                   Number() { }
 
@@ -41,6 +44,14 @@ namespace java {
 
                   /// Virtual destructor.
                   virtual ~Number() { }
+
+                  /// Returns the object's class.
+                  /// 
+                  /// Returns the object's class object.
+                  /// \return the object's class object.
+                  inline virtual Class const & getClass() const {
+                      return Number::klass; 
+                  }
 
                   /// Returns the value of the specified number as a byte.
                   /// 
@@ -92,8 +103,6 @@ namespace java {
                   
                   template <typename T> static inline String toHexString(T const & t);
             private:
-			/// The Integers' Class object.
-			static Class klass;
 		};
 
             template <typename T> 

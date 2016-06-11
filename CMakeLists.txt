@@ -1,6 +1,8 @@
 cmake_minimum_required (VERSION 3.4)
 
-project (j++)
+project (j++ CXX)
+
+set (CMAKE_CXX_STANDARD 11)
 
 # Header files are available under the root (the CMake-
 # populated config.h)  and under runtime/include, where

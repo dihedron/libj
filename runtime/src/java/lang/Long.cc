@@ -1,5 +1,5 @@
 /*
- * Integer.cc
+ * Long.cc
  * Copyright (C) 2016 Andrea Funto' <dihedron.dev@gmail.com>
  * 
  * libj is free software: you can redistribute it and/or modify it
@@ -15,44 +15,44 @@
  * You should have received a copy of the GNU General Public License along
  * with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <java/lang/Integer.h>
+#include <java/lang/Long.h>
 #include <java/lang/String.h>
 
 namespace java {
 	namespace lang {
 
-		const Class Integer::klass("java.lang.Integer", Number::klass);
+		const Class Long::klass("java.lang.Long", Number::klass);
 
 
-		byte Integer::byteValue() const {
+		byte Long::byteValue() const {
 			return (byte)value_;
 		}
 
-		double Integer::doubleValue() const {
+		double Long::doubleValue() const {
 			return (double)value_;
 		}
 
-        float Integer::floatValue() const {
+        float Long::floatValue() const {
         	return (float)value_;
         }
 
-        int Integer::intValue() const {
-        	return value_;
+        int Long::intValue() const {
+        	return (int)value_;
         }
 
-        long Integer::longValue() const {
+        long Long::longValue() const {
         	return (long)value_;
         }
 
-        short Integer::shortValue() const {
+        short Long::shortValue() const {
         	return (short)value_;
         }
 
-		String Integer::toString() const {			
+		String Long::toString() const {			
 			return String::valueOf(this->value_);
         }	
 
-		std::ostream & operator<<(std::ostream & os, Integer const & number) {
+		std::ostream & operator<<(std::ostream & os, Long const & number) {
 			os << number.value_;
 			return os;
 		}

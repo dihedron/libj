@@ -25,19 +25,28 @@
 namespace java {
     namespace lang {
 
-    	class Number;
+    	//class Number;
         
         class Class : public Object {
         public:
+
+            /// The Class' object Class.
+            static const Class klass;         
 				
             Class(String const & name);
+
+            Class(String const & name, Class const & super);
 				
             Class(const Class & other);
 				
             virtual ~Class() { }
 
-            virtual Class & getClass() const {
+            virtual Class const & getClass() const {
             	return Class::klass;
+            }
+
+            Class const * getSuperclass() const {
+                return super_;
             }
 
 			String const & getName() const {
@@ -47,10 +56,10 @@ namespace java {
 			String toString() const;
 				
         private:
-			String name_;
+			const String name_;
 
-			/// The Class' object Class.
-			static Class klass;			
+            const Class * super_;
+
         };        
     }
 }

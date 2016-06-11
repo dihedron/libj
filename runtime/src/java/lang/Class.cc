@@ -21,16 +21,25 @@
 
 namespace java {
 	namespace lang {
-				
-		Class Class::klass("java.lang.Class");
+		
+		const Class Class::klass("java.lang.Class", Object::klass);
 
 		Class::Class(String const & name) 
-			: name_(name) {
+			: name_(name)
+			, super_(nullptr) {
+		}
+
+		Class::Class(String const & name, Class const & super) 
+			: name_(name)
+			, super_(&super) {
 		}
 
 		Class::Class(const Class& other) 
-			: name_(other.name_) {
+			: name_(other.name_)
+			, super_(other.super_) {
 		}
+
+
 
 		String Class::toString() const {
 			// the name of the class must be hardcoded in this case, otherwise 
