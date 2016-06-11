@@ -27,3 +27,7 @@
 *.exe
 *.out
 *.app
+
+# Binary directories
+build/debug
+build/release
