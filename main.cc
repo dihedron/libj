@@ -26,6 +26,7 @@
 #include <java/lang/Class.h>
 #include <java/lang/String.h>
 #include <java/lang/Integer.h>
+#include <java/lang/System.h>
 
 using namespace java::lang;
 
@@ -66,6 +67,8 @@ int main(int argc, char** argv) {
     testStrings();
 
     testIntegers();
+
+    std::cout << "current time millis: " << System::currentTimeMillis() << std::endl;
     
     return 0;
 }

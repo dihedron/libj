@@ -13,10 +13,11 @@
  		const Class System::klass("java.lang.System", Object::klass);
 
  		long long System::currentTimeMillis() {
+ 			return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 //			std::chrono::time_point<std::chrono::high_resolution_clock> time;
 //    		time = std::chrono::high_resolution_clock::now(); 			
 // 			return time.;
- 			return 0;
+ 			//return 0;
  		}
  	}
  }
