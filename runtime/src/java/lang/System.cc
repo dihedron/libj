@@ -1,0 +1,22 @@
+/*
+ * System.cc
+ * Copyright (C) 2016 Andrea Funto' <dihedron.dev@gmail.com>
+ * See LICENSE for details and terms of use.
+ */
+
+ #include <java/lang/System.h>
+ #include <java/lang/Class.h>
+ #include <chrono>
+
+ namespace java {
+ 	namespace lang {
+ 		const Class System::klass("java.lang.System", Object::klass);
+
+ 		long long System::currentTimeMillis() {
+//			std::chrono::time_point<std::chrono::high_resolution_clock> time;
+//    		time = std::chrono::high_resolution_clock::now(); 			
+// 			return time.;
+ 			return 0;
+ 		}
+ 	}
+ }

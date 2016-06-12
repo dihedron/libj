@@ -27,7 +27,15 @@
 			"file": "runtime/src/java/lang/Class.cc",
 			"settings":
 			{
-				"buffer_size": 1250,
+				"buffer_size": 1420,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "CMakeLists.txt",
+			"settings":
+			{
+				"buffer_size": 636,
 				"line_ending": "Unix"
 			}
 		},
@@ -35,7 +43,7 @@
 			"file": "runtime/include/java/lang/Object.h",
 			"settings":
 			{
-				"buffer_size": 4055,
+				"buffer_size": 4397,
 				"line_ending": "Unix"
 			}
 		},
@@ -43,7 +51,7 @@
 			"file": "runtime/src/java/lang/Object.cc",
 			"settings":
 			{
-				"buffer_size": 1199,
+				"buffer_size": 1205,
 				"line_ending": "Unix"
 			}
 		},
@@ -59,7 +67,7 @@
 			"file": "runtime/include/java/lang/Integer.h",
 			"settings":
 			{
-				"buffer_size": 6050,
+				"buffer_size": 6173,
 				"line_ending": "Unix",
 				"name": "/*"
 			}
@@ -68,7 +76,7 @@
 			"file": "runtime/include/java/lang/Number.h",
 			"settings":
 			{
-				"buffer_size": 4425,
+				"buffer_size": 4784,
 				"line_ending": "Unix"
 			}
 		},
@@ -76,7 +84,7 @@
 			"file": "runtime/include/java/lang/Long.h",
 			"settings":
 			{
-				"buffer_size": 2137,
+				"buffer_size": 4724,
 				"line_ending": "Unix"
 			}
 		},
@@ -92,9 +100,25 @@
 			"file": "runtime/src/java/lang/Integer.cc",
 			"settings":
 			{
-				"buffer_size": 1614,
+				"buffer_size": 1561,
 				"line_ending": "Unix",
 				"name": "#include <Integer.h>"
+			}
+		},
+		{
+			"file": "runtime/src/java/lang/Number.cc",
+			"settings":
+			{
+				"buffer_size": 856,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "runtime/src/java/lang/Long.cc",
+			"settings":
+			{
+				"buffer_size": 1530,
+				"line_ending": "Unix"
 			}
 		},
 		{
@@ -106,10 +130,21 @@
 			}
 		},
 		{
+			"contents": "/*\n * Class.h\n * Copyright (C) 2016 Andrea Funto' <dihedron.dev@gmail.com>\n * See LICENSE for details.\n */\n\n#ifndef JAVA_LANG_CLASS\n#define JAVA_LANG_CLASS\n\n#include <java/lang/Object.h>\n#include <java/lang/String.h>\n\nnamespace java {\n    namespace lang {\n\n    	//class Number;\n        \n        class Class : public Object {\n        public:\n\n            /// The Class' object Class.\n            static const Class klass;         \n				\n            Class(String const & name);\n\n            Class(String const & name, Class const & super);\n				\n            Class(const Class & other);\n				\n            virtual ~Class() { }\n\n            virtual Class const & getClass() const {\n            	return Class::klass;\n            }\n\n            Class const * getSuperclass() const {\n                return super_;\n            }\n\n			String const & getName() const {\n				return name_;\n			}\n\n			String toString() const;\n				\n        private:\n			const String name_;\n\n            const Class * super_;\n\n        };        \n    }\n}\n\n#endif // JAVA_LANG_CLASS\n\n",
 			"file": "runtime/include/java/lang/Class.h",
+			"file_size": 1649,
+			"file_write_time": 131101450672607404,
 			"settings":
 			{
-				"buffer_size": 1411,
+				"buffer_size": 1043,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "LICENSE",
+			"settings":
+			{
+				"buffer_size": 1474,
 				"line_ending": "Unix"
 			}
 		}
@@ -163,17 +198,18 @@
 	},
 	"expanded_folders":
 	[
-		"/home/andrea/Desktop/temp/libjpp",
-		"/home/andrea/Desktop/temp/libjpp/runtime",
-		"/home/andrea/Desktop/temp/libjpp/runtime/include",
-		"/home/andrea/Desktop/temp/libjpp/runtime/include/java",
-		"/home/andrea/Desktop/temp/libjpp/runtime/include/java/lang",
-		"/home/andrea/Desktop/temp/libjpp/runtime/src",
-		"/home/andrea/Desktop/temp/libjpp/runtime/src/java",
-		"/home/andrea/Desktop/temp/libjpp/runtime/src/java/lang"
+		"/home/andrea/Desktop/libjpp_current",
+		"/home/andrea/Desktop/libjpp_current/runtime",
+		"/home/andrea/Desktop/libjpp_current/runtime/include",
+		"/home/andrea/Desktop/libjpp_current/runtime/include/java",
+		"/home/andrea/Desktop/libjpp_current/runtime/include/java/lang",
+		"/home/andrea/Desktop/libjpp_current/runtime/src",
+		"/home/andrea/Desktop/libjpp_current/runtime/src/java",
+		"/home/andrea/Desktop/libjpp_current/runtime/src/java/lang"
 	],
 	"file_history":
 	[
+		"/home/andrea/.config/sublime-text-3/Packages/User/C++.sublime-settings",
 		"/home/andrea/.config/sublime-text-3/Packages/Default/Preferences.sublime-settings",
 		"/home/d093154/Desktop/libj++/runtime/include/java/lang/Number.h",
 		"/home/d093154/Desktop/libj++/runtime/include/macros.h",
@@ -227,7 +263,7 @@
 	"groups":
 	[
 		{
-			"selected": 5,
+			"selected": 14,
 			"sheets":
 			[
 				{
@@ -257,7 +293,7 @@
 						"translation.y": 288.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 7,
+					"stack_index": 14,
 					"type": "text"
 				},
 				{
@@ -266,15 +302,15 @@
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1250,
+						"buffer_size": 1420,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								745,
-								745
+								873,
+								873
 							]
 						],
 						"settings":
@@ -286,34 +322,32 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 5,
+					"stack_index": 9,
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "runtime/include/java/lang/Object.h",
+					"file": "CMakeLists.txt",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4055,
+						"buffer_size": 636,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								3549,
-								3549
+								73,
+								73
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/Text/Plain text.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 935.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"stack_index": 11,
@@ -321,19 +355,19 @@
 				},
 				{
 					"buffer": 3,
-					"file": "runtime/src/java/lang/Object.cc",
+					"file": "runtime/include/java/lang/Object.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1199,
+						"buffer_size": 4397,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								978,
-								978
+								3315,
+								3315
 							]
 						],
 						"settings":
@@ -346,11 +380,41 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 2,
+					"stack_index": 8,
 					"type": "text"
 				},
 				{
 					"buffer": 4,
+					"file": "runtime/src/java/lang/Object.cc",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1205,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								935,
+								935
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 10,
+					"type": "text"
+				},
+				{
+					"buffer": 5,
 					"file": "runtime/src/java/lang/String.cc",
 					"semi_transient": false,
 					"settings":
@@ -375,24 +439,24 @@
 						"translation.y": 153.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 6,
+					"stack_index": 13,
 					"type": "text"
 				},
 				{
-					"buffer": 5,
+					"buffer": 6,
 					"file": "runtime/include/java/lang/Integer.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 6050,
+						"buffer_size": 6173,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5057,
-								4972
+								5181,
+								5181
 							]
 						],
 						"settings":
@@ -403,27 +467,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1517.0,
+						"translation.y": 1619.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 0,
+					"stack_index": 4,
 					"type": "text"
 				},
 				{
-					"buffer": 6,
+					"buffer": 7,
 					"file": "runtime/include/java/lang/Number.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 4425,
+						"buffer_size": 4784,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								859,
-								859
+								1024,
+								1024
 							]
 						],
 						"settings":
@@ -433,27 +497,27 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 1143.0,
+						"translation.y": 663.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 1,
+					"stack_index": 5,
 					"type": "text"
 				},
 				{
-					"buffer": 7,
+					"buffer": 8,
 					"file": "runtime/include/java/lang/Long.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 2137,
+						"buffer_size": 4724,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1850,
-								1850
+								1838,
+								1838
 							]
 						],
 						"settings":
@@ -463,14 +527,14 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 204.0,
+						"translation.y": 1024.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 9,
+					"stack_index": 3,
 					"type": "text"
 				},
 				{
-					"buffer": 8,
+					"buffer": 9,
 					"file": "runtime/include/java/lang/String.h",
 					"semi_transient": false,
 					"settings":
@@ -496,24 +560,24 @@
 						"translation.y": 1024.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 3,
+					"stack_index": 12,
 					"type": "text"
 				},
 				{
-					"buffer": 9,
+					"buffer": 10,
 					"file": "runtime/src/java/lang/Integer.cc",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1614,
+						"buffer_size": 1561,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1326,
-								1326
+								880,
+								880
 							]
 						],
 						"settings":
@@ -522,14 +586,70 @@
 							"syntax": "Packages/C++/C++.sublime-syntax"
 						},
 						"translation.x": 0.0,
-						"translation.y": 119.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 8,
+					"stack_index": 6,
 					"type": "text"
 				},
 				{
-					"buffer": 10,
+					"buffer": 11,
+					"file": "runtime/src/java/lang/Number.cc",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 856,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								849,
+								849
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 7,
+					"type": "text"
+				},
+				{
+					"buffer": 12,
+					"file": "runtime/src/java/lang/Long.cc",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1530,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1082,
+								1082
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/C++/C++.sublime-syntax"
+						},
+						"translation.x": 0.0,
+						"translation.y": 153.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 2,
+					"type": "text"
+				},
+				{
+					"buffer": 13,
 					"file": "runtime/include/java/lang/ValueTypes.h",
 					"semi_transient": false,
 					"settings":
@@ -553,35 +673,65 @@
 						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 10,
+					"stack_index": 15,
 					"type": "text"
 				},
 				{
-					"buffer": 11,
+					"buffer": 14,
 					"file": "runtime/include/java/lang/Class.h",
 					"semi_transient": false,
 					"settings":
 					{
-						"buffer_size": 1411,
+						"buffer_size": 1043,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								822,
-								822
+								76,
+								76
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/C++/C++.sublime-syntax"
+							"syntax": "Packages/C++/C++.sublime-syntax",
+							"tab_size": 4,
+							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 89.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
-					"stack_index": 4,
+					"stack_index": 0,
+					"type": "text"
+				},
+				{
+					"buffer": 15,
+					"file": "LICENSE",
+					"semi_transient": false,
+					"settings":
+					{
+						"buffer_size": 1474,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/Text/Plain text.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"stack_index": 1,
 					"type": "text"
 				}
 			]
