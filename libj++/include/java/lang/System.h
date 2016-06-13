@@ -60,7 +60,7 @@ namespace java {
 			///	Creates a new object, copying the contents of another
 			/// object instance.
 			/// \param other the object to be copied
-			System(const System & other) : Object() { throw new Object(); }
+			System(const System & other) : Object(other) { throw new Object(); }
 	
 			/// Destructor.
 			///
