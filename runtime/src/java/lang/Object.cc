@@ -11,17 +11,17 @@
 #include <java/lang/Number.h>
 
 namespace java {
-    namespace lang {
-        
-        const Class Object::klass("java.lang.Object");
+	namespace lang {
+				
+		const Class Object::klass("java.lang.Object");
 
 		inline String Object::toString() const {			
-            return getClass().getName() + "@" + Number::toHexString(hashCode());
-        }		
+			return getClass().getName() + "@" + Number::toHexString(hashCode());
+		}		
 
 		std::ostream & operator<<(std::ostream & os, Object const & object) {
 			os << object.toString();
 			return os;
 		}
-    }
+	}
 }

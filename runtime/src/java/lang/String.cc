@@ -27,7 +27,7 @@ namespace java {
 
 		String String::toString() const {			
 			return *this;
-        }		
+		}		
 
 		String String::operator+(String const & string) const {
 			return String(this->value_ + string.value_);

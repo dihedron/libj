@@ -28,8 +28,6 @@ namespace java {
 			, super_(other.super_) {
 		}
 
-
-
 		String Class::toString() const {
 			// the name of the class must be hardcoded in this case, otherwise 
 			// we sould end up in an infinite loop between toString() and getClass()

@@ -21,25 +21,25 @@ namespace java {
 			return (double)value_;
 		}
 
-        float Integer::floatValue() const {
-        	return (float)value_;
-        }
+		float Integer::floatValue() const {
+			return (float)value_;
+		}
 
-        int Integer::intValue() const {
-        	return value_;
-        }
+		int Integer::intValue() const {
+			return value_;
+		}
 
-        long Integer::longValue() const {
-        	return (long)value_;
-        }
+		long Integer::longValue() const {
+			return (long)value_;
+		}
 
-        short Integer::shortValue() const {
-        	return (short)value_;
-        }
+		short Integer::shortValue() const {
+			return (short)value_;
+		}
 
 		String Integer::toString() const {			
 			return String::valueOf(this->value_);
-        }	
+		}	
 
 		std::ostream & operator<<(std::ostream & os, Integer const & number) {
 			os << number.value_;
