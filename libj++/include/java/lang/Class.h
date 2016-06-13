@@ -9,6 +9,7 @@
 
 #include <java/lang/Object.h>
 #include <java/lang/String.h>
+#include <initializer_list>
 
 namespace java {
 	namespace lang {
@@ -21,6 +22,8 @@ namespace java {
 			Class(String const & name);
 
 			Class(String const & name, Class const & super);
+
+			Class(String const & name, Class const & super, std::initializer_list<String> interfaces);
 	
 			Class(const Class & other);
 	
@@ -34,6 +37,8 @@ namespace java {
 				return super_;
 			}
 
+			//List<String> const & getInterfaces() const;
+
 			String const & getName() const {
 				return name_;
 			}
@@ -45,6 +50,8 @@ namespace java {
 
 			const Class * super_;
 
+			// TODO: this must be a list, so no need to keep a count!
+			String * interfaces_;
 		};				
 	}
 }

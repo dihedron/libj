@@ -13,6 +13,10 @@
 #include <macros.h>
 #include <iostream>
 
+#ifndef interface
+#	define interface class
+#endif
+
 namespace java {
 	namespace lang {
 				
