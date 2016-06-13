@@ -39,7 +39,6 @@ static void testClasses() {
 	std::cout << "a Integer's class is \"" << i.getClass() << "\": \"" << i.getClass().getName() << "\"" << std::endl;	
 }
 
-
 static void testStrings() {
 	String s("hallo, world!");    
     std::cout << "string " << s << " (\"" << s.toString() << "\") has hashCode " << s.hashCode() << " and class " << s.getClass().getName() << std::endl;
