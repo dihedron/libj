@@ -4,8 +4,6 @@
  * See LICENSE for details and terms of use.
  */
 
-
-
 #ifndef JAVA_LANG_THROWABLE
 #define JAVA_LANG_THROWABLE
 
@@ -25,28 +23,30 @@ namespace java {
 
 			/// Copy constructor.
 			///
-			/// Creates a number object, initialising its internal status
+			/// Creates a Throwable object, initialising its internal status
 			/// with that of the provided object.
 			/// \param other the object to copy the internal status from.
 			Throwable(Throwable const & other);
 
 			/// Constructor.
 			/// 
-			/// Initialises yje Throwable with a message and no
+			/// Initialises the Throwable with a message and no
 			/// root cause.
 			/// \param message the message associated to this Throwable.
 			Throwable(String const & message);
 
 			/// Constructor.
 			/// 
-			/// Initialises yje Throwable with a message and a
+			/// Initialises the Throwable with a message and a
 			/// root cause.
 			/// \param message the message associated to this Throwable.
 			/// \param cause the cause associated to this Throwable.
 			Throwable(String const & message, Throwable const & cause);
 			
 			/// Virtual destructor.
-			virtual ~Throwable();
+			virtual inline ~Throwable() {
+				finalize();
+			}
 
 			/// Assignment operator.
 			///
@@ -86,7 +86,7 @@ namespace java {
 			/// 
 			/// Returns the object's class object.
 			/// \return the object's class object.
-			inline virtual Class const & getClass() const {
+			virtual inline Class const & getClass() const {
 				return Throwable::klass; 
 			}
 
@@ -96,16 +96,17 @@ namespace java {
 			/// result of the invocation of getLocalizedMessage().
 			/// \return the Throwable as a String.
 			virtual String toString() const;
-
-		protected:
-
+			
 			/// Cleans up the root Throwable pointer, if any.
-			inline virtual void finalize() {
+			virtual inline void finalize() {
+				//std::cout << "finalize in Throwable" << std::endl;				
 				if(cause_ != nullptr) {
 					delete cause_;
 					cause_ = nullptr;
 				}
 			}
+
+		protected:
 
 			/// The message associated with this throwable.
 			String message_;

@@ -28,7 +28,8 @@ namespace java {
 
 		Throwable::Throwable(String const & message) 
 			: message_(message)
-			, cause_(nullptr) { 			
+			, cause_(nullptr) {
+			//std::cout << "in Throwable(String)" << std::endl; 			
 		}
 
 		Throwable::Throwable(String const & message, Throwable const & cause)
@@ -36,11 +37,8 @@ namespace java {
 			, cause_(new Throwable(cause)) {			
 		}
 
-		Throwable::~Throwable() {
-			finalize();
-		}
-
 		Throwable & Throwable::operator=(Throwable const & other) {
+			std::cerr << "in Throwable::=" << std::endl;
 			if(this != &other) {
 				finalize();
 				message_ = other.message_;

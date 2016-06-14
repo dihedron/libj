@@ -4,105 +4,80 @@
  * See LICENSE for details and terms of use.
  */
 
-
 #ifndef JAVA_LANG_EXCEPTION
 #define JAVA_LANG_EXCEPTION
 
-#include <java/lang/ValueTypes.h>
-#include <java/lang/Object.h>
-#include <java/lang/Class.h>
-#include <sstream>
-#include <iomanip>
+#include <java/lang/Throwable.h>
 
 namespace java {
 	namespace lang {
-		class Exception : public Object {
+		class Exception : public Throwable {
 		public:
-			/// The Numbers' Class object.
+			/// The Exceptions' Class object.
 			static const Class klass;
 
 			/// Default constructor.
-			Number() { }
+			Exception() { }
 
 			/// Copy constructor.
 			///
-			/// Creates a number object, initialising its internal status
+			/// Creates an Exception object, initialising its internal status
 			/// with that of the provided object.
 			/// \param other the object to copy the internal status from.
-			Number(Number const & other) { }
+			Exception(Exception const & other) : Throwable(other) { }
 
+			/// Constructor.
+			/// 
+			/// Initialises the Exception with a message and no
+			/// root cause.
+			/// \param message the message associated to this Throwable.
+			Exception(String const & message) : Throwable(message) { }
+
+			/// Constructor.
+			/// 
+			/// Initialises the Exception with a message and a
+			/// root cause.
+			/// \param message the message associated to this Exception.
+			/// \param cause the cause associated to this Exception.
+			Exception(String const & message, Throwable const & cause) : Throwable(message, cause) { }
+			
 			/// Virtual destructor.
-			virtual ~Number() { }
+			virtual inline ~Exception() {
+				finalize();
+			}
+
+			/// Assignment operator.
+			///
+			/// Copies the contents of the other Throwable into
+			/// this one.
+			/// \param other the Throwable to copy from.
+			Exception & operator=(Exception const & other);
 
 			/// Returns the object's class.
 			/// 
 			/// Returns the object's class object.
 			/// \return the object's class object.
-			inline virtual Class const & getClass() const {
-				return Number::klass; 
+			virtual inline Class const & getClass() const {
+				return Exception::klass; 
 			}
 
-			/// Returns the value of the specified number as a byte.
-			/// 
-			/// Returns the value of the specified number as a byte. This may 
-			/// involve rounding or truncation
-			/// \return the numeric value represented by this object after 
-			/// conversion to type byte.
-			virtual byte byteValue() const = 0;
-
-			/// Returns the value of the specified number as a double.
+			/// Returns a String representation of this Exception.
 			///
-			/// Returns the value of the specified number as a double. This may 
-			/// involve rounding.
-			/// \return the numeric value represented by this object after 
-			/// conversion to type double.
-			virtual double doubleValue() const = 0;
+			/// Returns the name of this class, a ": " and then the
+			/// result of the invocation of getLocalizedMessage().
+			/// \return the Exception as a String.
+			//virtual String toString() const;
 
-			/// Returns the value of the specified number as a float.
-			///
-			/// Returns the value of the specified number as a float. This may 
-			/// involve rounding.
-			/// \return the numeric value represented by this object after 
-			/// conversion to type float.
-			virtual float floatValue() const = 0;
+		protected:
 
-			/// Returns the value of the specified number as an int.
-			///
-			/// Returns the value of the specified number as an int. This may 
-			/// involve rounding.
-			/// \return the numeric value represented by this object after 
-			/// conversion to type int.
-			virtual int intValue() const = 0;
-
-			/// Returns the value of the specified number as a long.
-			///
-			/// Returns the value of the specified number as a long. This may 
-			/// involve rounding.
-			/// \return the numeric value represented by this object after 
-			/// conversion to type long.
-			virtual long longValue() const = 0;
-
-			/// Returns the value of the specified number as a short.
-			///
-			/// Returns the value of the specified number as a short. This may 
-			/// involve rounding or truncation.
-			/// \return the numeric value represented by this object after 
-			/// conversion to type short.
-			virtual short shortValue() const = 0;
-			
-			template <typename T> static inline String toHexString(T const & t);
-		private:
+			/// Cleans up the root Exception pointer, if any.
+			inline virtual void finalize() {
+				//std::cout << "finalize in Exception" << std::endl;
+			}
 		};
-
-		template <typename T> 
-		String Number::toHexString(T const & t) {
-			std::stringstream stream;
-			stream << "0x" << std::hex << t;
-			return String(stream.str().c_str());
-		}
 	}
 }
 
 
-#endif // JAVA_LANG_INTEGER
+#endif // JAVA_LANG_EXCEPTION
 

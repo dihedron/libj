@@ -9,6 +9,6 @@
 
 namespace java {
 	namespace io {
-		const java::lang::String Serializable::name = "java.io.Serializable"; 
+		//const java::lang::String Serializable::name("java.io.Serializable"); 
 	}
 }

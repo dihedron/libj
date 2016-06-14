@@ -27,9 +27,9 @@
 #include <java/lang/String.h>
 #include <java/lang/Integer.h>
 #include <java/lang/System.h>
+#include <java/lang/Exception.h>
 
 using namespace java::lang;
-
 
 static void testClasses() {
 	String s;
@@ -54,11 +54,17 @@ static void testIntegers() {
     std::cout << "integer " << i << " (\"" << i.toString() << "\") has hashCode " << i.hashCode() << " and class " << i.getClass().getName() << std::endl;	
 }
 
+static void testClassesAndInterfaces() {
+	{ Integer i(10); }
+	{ Exception("hallo"); }
+}
+
+
 /*
  * 
  */
 int main(int argc, char** argv) {
-
+	
 	std::cout << "hallo from libj++ ver." << LIBJPP_VERSION_MAJOR << "." << LIBJPP_VERSION_MINOR << "!" << std::endl;    
 
     testClasses();
@@ -66,6 +72,8 @@ int main(int argc, char** argv) {
     testStrings();
 
     testIntegers();
+
+	testClassesAndInterfaces();
 
     std::cout << "current time millis: " << System::currentTimeMillis() << std::endl;
     

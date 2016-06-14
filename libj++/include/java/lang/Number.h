@@ -33,7 +33,9 @@ namespace java {
 			Number(Number const & other) { }
 
 			/// Virtual destructor.
-			virtual ~Number() { }
+			virtual ~Number() {
+				finalize();
+			}
 
 			/// Returns the object's class.
 			/// 
@@ -90,6 +92,11 @@ namespace java {
 			/// \return the numeric value represented by this object after 
 			/// conversion to type short.
 			virtual short shortValue() const = 0;
+
+			/// Performs a clanup on the object.
+			virtual void finalize() {
+				//std::cout << "finalize in Number" << std::endl;
+			}
 			
 			template <typename T> static inline String toHexString(T const & t);
 		private:

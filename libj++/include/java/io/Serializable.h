@@ -16,7 +16,9 @@ namespace java {
 		/// marker interface.
 		interface Serializable {
 		public:
-			static const java::lang::String name; 
+			static constexpr char const * name = "java.io.Serializable";// java::lang::String name; 
+
+			//static java::lang::String const & getName() { return name; } 
 		};				
 	}
 }

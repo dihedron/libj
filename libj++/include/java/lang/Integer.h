@@ -48,7 +48,9 @@ namespace java {
 			Integer & operator=(Integer const & other);
 
 			/// Destructor.
-			virtual ~Integer() { }
+			virtual ~Integer() { 
+				finalize();
+			}
 
 			/// Returns this Integer's class object.
 			///
@@ -108,7 +110,7 @@ namespace java {
 			virtual short shortValue() const;
 
 			/// Returns the 
-					virtual String toString() const;
+			virtual String toString() const;
 
 
 
@@ -121,6 +123,10 @@ namespace java {
 			Integer operator+(Integer const & other) const { return Integer(value_ + other.value_); }
 
 			friend std::ostream & operator<<(std::ostream & os, Integer const & integer);
+
+			inline virtual void finalize() {
+				//std::cout << "finalize in Integer" << std::endl;
+			}
 		private:
 			int value_;
 

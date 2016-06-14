@@ -13,10 +13,6 @@
 #include <macros.h>
 #include <iostream>
 
-#ifndef interface
-#	define interface class
-#endif // interface
-
 namespace java {
 	namespace lang {
 				
@@ -48,17 +44,19 @@ namespace java {
 	
 			/// Destructor.
 			///
-			/// The default destructor does nothing, except invoking
-			/// the finalize() method.
-			virtual ~Object() { 
-				finalize();
+			/// The Object's destructor does nothing.
+			virtual ~Object() {
+				// I know finalize() is virtual, but that's exactly why
+				// I call it here: each object in the hierarchy has a chance
+				// to call its own implementation and release its resources.
+				finalize(); 
 			}
 
 			/// Assignment operator.
 			///
 			/// A do-nothing assignment operator.
 			/// \param other the object to copy from.
-			Object & operator=(Object const & other) { std::cout << "copying" << std::endl; return *this; }
+			Object & operator=(Object const & other) { return *this; }
 						
 			/// Compares this object to another for equality.
 			///
@@ -102,13 +100,22 @@ namespace java {
 			friend std::ostream & operator<<(std::ostream & os, Object const & object);
 
 		protected:
-			virtual Object clone() const { }
+			/// Returns a clone of the current Object.
+			///
+			/// This method actually does nothing exception copying onto
+			/// the stack the current Object, in order for it to be
+			/// transferred back to the caller.
+			/// \return a copy of the current object.
+			inline virtual Object clone() const { return *this; }
 
 			/// Performs a final cleanup.
 			/// 
 			/// Cleans up any resources associated with this object,
-			/// before its associated memory is recalled.
-			virtual void finalize() { }
+			/// before its associated memory is recalled. It really 
+			/// does nothing on this class, but it can be overridden.
+			virtual void finalize() { 
+				//std::cout << "finalize in Object" << std::endl;
+			}
 		};
 	}
 }

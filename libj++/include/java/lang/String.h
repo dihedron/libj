@@ -48,7 +48,9 @@ namespace java {
 			/// Destructor.
 			///
 			/// Cleans up the object.
-			virtual ~String() { }
+			virtual ~String() { 
+				finalize();
+			}
 
 			/// Assignment operator.
 			///
@@ -73,6 +75,11 @@ namespace java {
 			String operator+(long long value) const; 
 
 			friend std::ostream & operator<<(std::ostream & os, String const & string);
+
+			/// Cleans up the object's internal status.
+			virtual inline void finalize() {
+				//std::cout << "finalize in String" << std::endl;
+			}
 
 		private:
 			/// Constructor.
