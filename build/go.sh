@@ -5,17 +5,19 @@ if [ $# -ne 1 ]; then
 usage:
 	./go.sh <option>
 where <option> can be any of
-	-b|--build|build		performs a build (make)
-	-c|--clean|clean		cleans up the build (make clean)
-	-d|--debug|debug		initialises/refreshes a debug configuration
-	-r|--release|release	initialises/refreshes a release configuration
-	-p|--purge|purge		purges any configuration done so far
+	-b | --build   | build		performs a build (make)
+	-m | --make    | make		performs a build (make)
+	-c | --clean   | clean		cleans up the build (make clean)
+	-d | --debug   | debug		initialises/refreshes a debug configuration
+	-r | --release | release	initialises/refreshes a release configuration
+	-p | --purge   | purge		purges any configuration done so far
+	-x | --execute | execute    runs the executable
 HEREDOC
 exit 1
 fi
 
 case "$1" in
-	build|-b|--build)
+	build|-b|--build|make|-m|--make)
 		make
 		;;
 	clean|-c|--clean)
@@ -29,5 +31,8 @@ case "$1" in
 		;;
 	purge|-p|--purge)
 		rm -rf CMakeCache.txt cmake_install.cmake Makefile CMakeFiles/ libj++/ driver/
+		;;
+	execute|-x|--execute)
+		./driver/driver
 		;;
 esac
