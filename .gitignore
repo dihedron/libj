@@ -29,5 +29,4 @@
 *.app
 
 # Binary directories
-build/debug
-build/release
+build

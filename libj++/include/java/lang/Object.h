@@ -15,7 +15,7 @@
 
 #ifndef interface
 #	define interface class
-#endif
+#endif // interface
 
 namespace java {
 	namespace lang {
