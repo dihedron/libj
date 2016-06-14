@@ -3,3 +3,4 @@
 // the configured options and settings for Tutorial
 #define LIBJPP_VERSION_MAJOR @LIBJPP_VERSION_MAJOR@
 #define LIBJPP_VERSION_MINOR @LIBJPP_VERSION_MINOR@
+#define LIBJPP_VERSION_PATCH @LIBJPP_VERSION_PATCH@

@@ -65,7 +65,7 @@ static void testClassesAndInterfaces() {
  */
 int main(int argc, char** argv) {
 	
-	std::cout << "hallo from libj++ ver." << LIBJPP_VERSION_MAJOR << "." << LIBJPP_VERSION_MINOR << "!" << std::endl;    
+	std::cout << "hallo from libj++ ver." << LIBJPP_VERSION_MAJOR << "." << LIBJPP_VERSION_MINOR << "." << LIBJPP_VERSION_PATCH << "!" << std::endl;    
 
     testClasses();
 

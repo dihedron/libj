@@ -3,8 +3,9 @@ CMAKE_MINIMUM_REQUIRED(VERSION 3.4)
 
 # Set the version number; this will be automatically inserted 
 # by CMake into the config.h.in file, to generate config.h
-set (LIBJPP_VERSION_MAJOR 1)
+set (LIBJPP_VERSION_MAJOR 0)
 set (LIBJPP_VERSION_MINOR 0)
+set (LIBJPP_VERSION_PATCH 1)
 
  
 # Configure the header file used to pass some of the CMake 
