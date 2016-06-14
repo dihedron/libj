@@ -32,11 +32,20 @@
 using namespace java::lang;
 
 static void testClasses() {
-	String s;
-	std::cout << "a String's class is \"" << s.getClass() << "\": \"" << s.getClass().getName() << "\"" << std::endl;	
+	{
+		String s;
+		std::cout << "a String's class is \"" << s.getClass() << "\": \"" << s.getClass().getName() << "\"" << std::endl;
+	}	
 
-	Integer i;
-	std::cout << "a Integer's class is \"" << i.getClass() << "\": \"" << i.getClass().getName() << "\"" << std::endl;	
+	{
+		Integer i;
+		std::cout << "an Integer's class is \"" << i.getClass() << "\": \"" << i.getClass().getName() << "\"" << std::endl;
+	}
+
+	{
+		Exception e("hallo!");
+		std::cout << "an Exception's class is \"" << e.getClass() << "\": \"" << e.getClass().getName() << "\"" << std::endl;
+	}	
 }
 
 static void testStrings() {
@@ -54,11 +63,6 @@ static void testIntegers() {
     std::cout << "integer " << i << " (\"" << i.toString() << "\") has hashCode " << i.hashCode() << " and class " << i.getClass().getName() << std::endl;	
 }
 
-static void testClassesAndInterfaces() {
-	{ Integer i(10); }
-	{ Exception("hallo"); }
-}
-
 
 /*
  * 
@@ -72,8 +76,6 @@ int main(int argc, char** argv) {
     testStrings();
 
     testIntegers();
-
-	testClassesAndInterfaces();
 
     std::cout << "current time millis: " << System::currentTimeMillis() << std::endl;
     
