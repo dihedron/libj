@@ -27,5 +27,5 @@ file(GLOB_RECURSE LIBJPP_SRCS "*.cc")
 file(GLOB_RECURSE LIBJPP_HDRS "*.h")
 
 # Build the library using the aforementioned sources and headers
-add_library(j++ ${LIBJPP_SRCS} ${LIBJPP_HDRS})
+add_library(j++ SHARED ${LIBJPP_SRCS} ${LIBJPP_HDRS})
 
