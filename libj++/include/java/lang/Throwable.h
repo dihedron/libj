@@ -44,7 +44,7 @@ namespace java {
 			Throwable(String const & message, Throwable const & cause);
 			
 			/// Virtual destructor.
-			virtual inline ~Throwable() {
+			inline virtual ~Throwable() {
 				finalize();
 			}
 
@@ -86,7 +86,7 @@ namespace java {
 			/// 
 			/// Returns the object's class object.
 			/// \return the object's class object.
-			virtual inline Class const & getClass() const {
+			inline virtual Class const & getClass() const {
 				return Throwable::klass; 
 			}
 
@@ -98,7 +98,7 @@ namespace java {
 			virtual String toString() const;
 			
 			/// Cleans up the root Throwable pointer, if any.
-			virtual inline void finalize() {
+			inline virtual void finalize() {
 				//std::cout << "finalize in Throwable" << std::endl;				
 				if(cause_ != nullptr) {
 					delete cause_;

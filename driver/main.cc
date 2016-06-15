@@ -27,7 +27,7 @@
 #include <java/lang/String.h>
 #include <java/lang/Integer.h>
 #include <java/lang/System.h>
-#include <java/lang/Exception.h>
+#include <java/lang/CloneNotSupportedException.h>
 
 using namespace java::lang;
 
@@ -43,9 +43,12 @@ static void testClasses() {
 	}
 
 	{
-		Exception e("hallo!");
-		std::cout << "an Exception's class is \"" << e.getClass() << "\": \"" << e.getClass().getName() << "\"" << std::endl;
-	}	
+		CloneNotSupportedException e("hallo!");
+		std::cout << "a CloneNotSupportedException's class is \"" << e.getClass() << "\": \"" << e.getClass().getName() << "\"" << std::endl;
+		for(auto i : e.getClass().getInterfaces()) {
+			std::cout << " - implements interface " << i << std::endl;
+		}
+	}
 }
 
 static void testStrings() {

@@ -15,7 +15,7 @@ namespace java {
 				
 		const Class Object::klass("java.lang.Object");
 
-		inline String Object::toString() const {			
+		String Object::toString() const {			
 			return getClass().getName() + "@" + Number::toHexString(hashCode());
 		}		
 

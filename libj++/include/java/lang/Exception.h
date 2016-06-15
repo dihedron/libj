@@ -30,7 +30,7 @@ namespace java {
 			/// 
 			/// Initialises the Exception with a message and no
 			/// root cause.
-			/// \param message the message associated to this Throwable.
+			/// \param message the message associated to this Exception.
 			Exception(String const & message) : Throwable(message) { }
 
 			/// Constructor.
@@ -42,37 +42,23 @@ namespace java {
 			Exception(String const & message, Throwable const & cause) : Throwable(message, cause) { }
 			
 			/// Virtual destructor.
-			virtual inline ~Exception() {
+			inline virtual ~Exception() {
 				finalize();
 			}
 
 			/// Assignment operator.
 			///
-			/// Copies the contents of the other Throwable into
+			/// Copies the contents of the other Exception into
 			/// this one.
-			/// \param other the Throwable to copy from.
+			/// \param other the Exception to copy from.
 			Exception & operator=(Exception const & other);
 
 			/// Returns the object's class.
 			/// 
 			/// Returns the object's class object.
 			/// \return the object's class object.
-			virtual inline Class const & getClass() const {
+			inline virtual Class const & getClass() const {
 				return Exception::klass; 
-			}
-
-			/// Returns a String representation of this Exception.
-			///
-			/// Returns the name of this class, a ": " and then the
-			/// result of the invocation of getLocalizedMessage().
-			/// \return the Exception as a String.
-			//virtual String toString() const;
-
-		protected:
-
-			/// Cleans up the root Exception pointer, if any.
-			inline virtual void finalize() {
-				//std::cout << "finalize in Exception" << std::endl;
 			}
 		};
 	}

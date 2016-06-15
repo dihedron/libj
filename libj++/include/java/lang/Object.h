@@ -45,7 +45,7 @@ namespace java {
 			/// Destructor.
 			///
 			/// The Object's destructor does nothing.
-			virtual ~Object() {
+			inline virtual ~Object() {
 				// I know finalize() is virtual, but that's exactly why
 				// I call it here: each object in the hierarchy has a chance
 				// to call its own implementation and release its resources.
@@ -106,16 +106,14 @@ namespace java {
 			/// the stack the current Object, in order for it to be
 			/// transferred back to the caller.
 			/// \return a copy of the current object.
-			inline virtual Object clone() const { return *this; }
+			inline virtual Object clone() const { return Object(*this); }
 
 			/// Performs a final cleanup.
 			/// 
 			/// Cleans up any resources associated with this object,
 			/// before its associated memory is recalled. It really 
 			/// does nothing on this class, but it can be overridden.
-			virtual void finalize() { 
-				//std::cout << "finalize in Object" << std::endl;
-			}
+			inline virtual void finalize() { }
 		};
 	}
 }

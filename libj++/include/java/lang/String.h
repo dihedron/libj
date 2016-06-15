@@ -72,12 +72,32 @@ namespace java {
 
 			String operator+(String const & string) const;
 			String operator+(long value) const;	
-			String operator+(long long value) const; 
+			String operator+(long long value) const;
+
+			/// Compares two strings.
+			///
+			/// Lexicographically compares two strings, returning whether
+			/// this one precedes the other one.
+			/// \param other the String to compare against
+			/// \return whether this String comes before the other
+			inline virtual bool operator<(String const & other) {
+				return *this < other;
+			}
+
+			/// Compares two strings.
+			///
+			/// Lexicographically compares two strings, returning whether
+			/// this one comes after the other one.
+			/// \param other the String to compare against
+			/// \return whether this String comes after the other
+			inline virtual bool operator>(String const & other) {
+				return *this > other;
+			}			 
 
 			friend std::ostream & operator<<(std::ostream & os, String const & string);
 
 			/// Cleans up the object's internal status.
-			virtual inline void finalize() {
+			inline virtual void finalize() {
 				//std::cout << "finalize in String" << std::endl;
 			}
 

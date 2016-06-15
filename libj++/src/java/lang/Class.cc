@@ -38,6 +38,14 @@ namespace java {
 			, super_(other.super_) {
 		}
 
+		std::list<String> Class::getInterfaces() const {			
+			std::list<String> interfaces(interfaces_);
+			if(super_ != nullptr) {
+				interfaces.merge(super_->getInterfaces());
+			}
+			return interfaces;
+		}
+
 		String Class::toString() const {
 			// the name of the class must be hardcoded in this case, otherwise 
 			// we would end up in an infinite loop between toString() and getClass()

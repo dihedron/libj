@@ -54,7 +54,7 @@ namespace java {
 			Class(const Class & other);
 	
 			/// Destructor.
-			virtual inline ~Class() { 
+			inline virtual ~Class() { 
 				finalize();
 			}
 
@@ -64,7 +64,7 @@ namespace java {
 			/// case of Class, this is a reference to an instance naming 
 			/// itself.
 			/// \return the Class object representing the class.
-			virtual Class const & getClass() const {
+			inline virtual Class const & getClass() const {
 				return Class::klass;
 			}
 
@@ -73,33 +73,39 @@ namespace java {
 			/// Returns the superclass of this Class, or nullptr if
 			/// this Class represents Object, which has no parent class.
 			/// \return the superclass of this Class, or nullptr.
-			Class const * getSuperclass() const {
+			inline Class const * getSuperclass() const {
 				return super_;
 			}
 
-			//List<String> const & getInterfaces() const;
+			std::list<String> getInterfaces() const;
 
 			/// Returns the name of this Class.
 			///
 			/// Returns the fully qualified name of this Class,
 			/// including the package name.
 			/// \return the name of this Class
-			String const & getName() const {
+			inline String const & getName() const {
 				return name_;
 			}
 
-			/// Returns a String representaion of this Class.
+			/// Returns the canonical name of this Class.
+			///
+			/// Returns the canonical name of this Class.
+			/// \return the canonical name of this Class
+			inline String const & getCanonicalName() const {
+				return getName();
+			}			
+
+			/// Returns a String representation of this Class.
 			/// 
-			/// Returns a String representaion of this Class, including 
+			/// Returns a String representation of this Class, including 
 			/// the (hardcoded) name of the Class, an "@" sign and the
 			/// hexadecimal representation of the Object's hashCode().
 			/// \return a String representation of this class.
-			String toString() const;
+			virtual String toString() const;
 
 			/// Cleans up any memory associated with a Class object.
-			virtual inline void finalize() {
-				//std::cout << "finalize in Class" << std::endl;
-			}
+			inline virtual void finalize() { }
 				
 		private:
 			/// The fully qualified name of the class.
