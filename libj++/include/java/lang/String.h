@@ -18,6 +18,9 @@ namespace java {
 		
 		class String : public Object {
 		public:
+
+			/// The Strings' shared class object.
+			static Class klass;		
 						
 			/// Factory method for converting values to a String.
 			///
@@ -156,9 +159,7 @@ namespace java {
 			friend std::ostream & operator<<(std::ostream & os, String const & string);
 
 			/// Cleans up the object's internal status.
-			inline virtual void finalize() {
-				//std::cout << "finalize in String" << std::endl;
-			}
+			inline virtual void finalize() { }
 
 		private:
 			/// Constructor.
@@ -170,9 +171,6 @@ namespace java {
 	
 			/// The uderlying String's value.
 			std::string value_;   
-
-			/// The Strings' shared class object.
-			static Class klass;
 		};
 
 		template <typename T> 
