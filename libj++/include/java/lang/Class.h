@@ -88,11 +88,20 @@ namespace java {
 				return name_;
 			}
 
+			/// Returns the short name of this Class.
+			///
+			/// Returns the short name of this Class,
+			/// excluding the package name.
+			/// \return the short name of this Class
+			inline String getSimpleName() const {
+				return name_.substring(name_.lastIndexOf('.') + 1);
+			}
+
 			/// Returns the canonical name of this Class.
 			///
 			/// Returns the canonical name of this Class.
 			/// \return the canonical name of this Class
-			inline String const & getCanonicalName() const {
+			inline String getCanonicalName() const {
 				return getName();
 			}			
 

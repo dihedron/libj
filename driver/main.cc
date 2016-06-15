@@ -32,15 +32,20 @@
 using namespace java::lang;
 
 static void testClasses() {
+	std::cout << "---------------- TEST CLASSES ----------------" << std::endl;
 	{
 		String s;
 		std::cout << "a String's class is \"" << s.getClass() << "\": \"" << s.getClass().getName() << "\"" << std::endl;
-	}	
+	}
+
+	std::cout << "----------------------------------------------" << std::endl;	
 
 	{
 		Integer i;
 		std::cout << "an Integer's class is \"" << i.getClass() << "\": \"" << i.getClass().getName() << "\"" << std::endl;
 	}
+
+	std::cout << "----------------------------------------------" << std::endl;
 
 	{
 		CloneNotSupportedException e("hallo!");
@@ -49,16 +54,34 @@ static void testClasses() {
 			std::cout << " - implements interface " << i << std::endl;
 		}
 	}
+
+	std::cout << "----------------------------------------------" << std::endl;
+
+	CloneNotSupportedException ex("hallo!");
+	std::cout << "class name: \"" << ex.getClass().getName() << "\", simple name: \"" << ex.getClass().getSimpleName() << "\"" << std::endl;
+
+	std::cout << "---------------- TEST CLASSES ----------------" << std::endl;
 }
 
 static void testStrings() {
+	std::cout << "---------------- TEST STRINGS ----------------" << std::endl;
 	String s("hallo, world!");    
     std::cout << "string " << s << " (\"" << s.toString() << "\") has hashCode " << s.hashCode() << " and class " << s.getClass().getName() << std::endl;
+
+	std::cout << "----------------------------------------------" << std::endl;
 
     String s1("s1"), s2("s2");
     std::cout << "s1: \"" << s1 << "\", s2: \"" << s2 << "\"" << std::endl; 
     s2 = s1;
-    std::cout << "s1: \"" << s1 << "\", s2: \"" << s2 << "\"" << std::endl; 
+    std::cout << "s1: \"" << s1 << "\", s2: \"" << s2 << "\"" << std::endl;
+
+	std::cout << "----------------------------------------------" << std::endl;
+
+	String s3("java.lang.Class");
+	std::cout << s3 << " from last dot onwards would be \"" << s3.substring(s3.lastIndexOf('.') + 1) << "\"" << std::endl;
+	std::cout << s3 << " from last comma onwards would be \"" << s3.substring(s3.lastIndexOf(',') + 1) << "\"" << std::endl;
+
+	std::cout << "---------------- TEST STRINGS ----------------" << std::endl;
 }
 
 static void testIntegers() {

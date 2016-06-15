@@ -58,6 +58,54 @@ namespace java {
 			/// \param other the object to copy from.
 			String & operator=(String const & other);
 
+			/// Returns the last occurrence of the specified character.
+			/// 
+			/// Returns the index within this string of the last occurrence 
+			/// of the specified character.
+			/// \param ch the character to look for
+			/// \return the index of the character, -1 if not found.
+  			inline int lastIndexOf(char ch) const { 
+				return value_.find_last_of(ch);
+			}
+/*
+ int 	lastIndexOf(int ch, int fromIndex)
+          Returns the index within this string of the last occurrence of the specified character, searching backward starting at the specified index.
+ int 	lastIndexOf(String str)
+          Returns the index within this string of the rightmost occurrence of the specified substring.
+ int 	lastIndexOf(String str, int fromIndex)
+          Returns the index within this string of the last occurrence of the specified substring, searching backward starting at the specified index.
+		  */
+
+			/// Returns the length of this String.
+			///
+			/// Returns the length of this String, 0 if the String
+			/// is empty.
+			/// \return the length of the String
+			inline int length() const {
+				return (int)value_.size();
+			}     
+
+			/// Returns a new string that is a substring of this string.
+			/// 
+			/// Returns a new string that is a substring of this string,
+			/// starting at the the given index until the end
+			/// \param beginIndex the index of the first included character
+			/// \return a substring, starting at the given index
+			inline String substring(int beginIndex) const {
+				return String(value_.substr(beginIndex).c_str());
+			}
+
+			/// Returns a new string that is a substring of this string.
+			/// 
+			/// Returns a new string that is a substring of this string,
+			/// between the given start (included) and end (excluded) positions
+			/// \param beginIndex the index of the first included character
+			/// \param endIndex the index of the first excluded character
+			/// \return a substring, between the two indexes
+			inline String substring(int beginIndex, int endIndex) const {
+				return String(value_.substr(beginIndex, endIndex).c_str());
+			}
+
 			/// Returns the object's class.
 			///
 			/// Returns a Class object representing this object's class.
