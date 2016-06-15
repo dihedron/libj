@@ -4,12 +4,9 @@
  * See LICENSE for details and terms of use.
  */
 
-
-
 #ifndef JAVA_LANG_NUMBER
 #define JAVA_LANG_NUMBER
 
-#include <java/lang/ValueTypes.h>
 #include <java/lang/Object.h>
 #include <java/lang/Class.h>
 #include <sstream>
@@ -94,9 +91,7 @@ namespace java {
 			virtual short shortValue() const = 0;
 
 			/// Performs a clanup on the object.
-			virtual void finalize() {
-				//std::cout << "finalize in Number" << std::endl;
-			}
+			inline virtual void finalize() { }
 			
 			template <typename T> static inline String toHexString(T const & t);
 		private:
@@ -112,5 +107,5 @@ namespace java {
 }
 
 
-#endif // JAVA_LANG_INTEGER
+#endif // JAVA_LANG_NUMBER
 

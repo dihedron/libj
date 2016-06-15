@@ -8,7 +8,6 @@
 #define JAVA_LANG_CLONEABLE
 
 #include <java/lang/Object.h>
-#include <java/lang/String.h>
 
 namespace java {
 	namespace io {
