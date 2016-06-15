@@ -81,6 +81,11 @@ static void testStrings() {
 	std::cout << s3 << " from last dot onwards would be \"" << s3.substring(s3.lastIndexOf('.') + 1) << "\"" << std::endl;
 	std::cout << s3 << " from last comma onwards would be \"" << s3.substring(s3.lastIndexOf(',') + 1) << "\"" << std::endl;
 
+	std::cout << "----------------------------------------------" << std::endl;
+
+	String s4("/usr/bin/man");
+	std::cout << s4 << " from the / before the last is \"" << s4.substring(s4.lastIndexOf('/', 7)) << "\" (expected \"/bin/man\")" << std::endl;
+
 	std::cout << "---------------- TEST STRINGS ----------------" << std::endl;
 }
 

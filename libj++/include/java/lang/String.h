@@ -67,9 +67,20 @@ namespace java {
   			inline int lastIndexOf(char ch) const { 
 				return value_.find_last_of(ch);
 			}
+
+			/// Returns the last occurrence of the specified character.
+			/// 
+			/// Returns the index within this string of the last occurrence 
+			/// of the specified character, searching backward starting at 
+			/// the specified index.
+			/// \param ch the character to look for
+			/// \param fromIndex
+			/// \return the index of the character, -1 if not found.
+  			inline int lastIndexOf(char ch, int fromIndex) const { 
+				return value_.find_last_of(ch, fromIndex);
+			}
+			
 /*
- int 	lastIndexOf(int ch, int fromIndex)
-          Returns the index within this string of the last occurrence of the specified character, searching backward starting at the specified index.
  int 	lastIndexOf(String str)
           Returns the index within this string of the rightmost occurrence of the specified substring.
  int 	lastIndexOf(String str, int fromIndex)
