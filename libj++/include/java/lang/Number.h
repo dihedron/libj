@@ -93,8 +93,12 @@ namespace java {
 			/// Performs a clanup on the object.
 			inline virtual void finalize() { }
 			
+			/// Converts the given Number to an hexadecimal String.
+			///
+			/// Converts the current Number to an hexadecimal String.
+			/// \param the Number to be converted to its hex representation.
+			/// \return a String with the hexadecimal representation of the Number
 			template <typename T> static inline String toHexString(T const & t);
-		private:
 		};
 
 		template <typename T> 
