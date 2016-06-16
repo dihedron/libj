@@ -101,7 +101,7 @@ public:
 	MyRunnable(String const & symbol) : Runnable(), symbol_(symbol) { }
 
 	void run() {
-		for(int i = 0; i < 1000; ++i) {
+		for(int i = 0; i < 800; ++i) {
 			std::cout << symbol_;
 		}
 	}
@@ -110,18 +110,20 @@ private:
 };
 
 static void testThreads() {
-	MyRunnable r1("+"), r2("-");
+	MyRunnable r1("1"), r2("2"), r3("3"), r4("4");
+	Thread t1(&r1), t2(&r2), t3(&r3), t4(&r4);
 
 	std::cout << "---------------- TEST THREADS ----------------" << std::endl;	
-	Thread t1(&r1), t2(&r2);
-
 	std::cout << "starting threads..." << std::endl;
 	t1.start();
 	t2.start();
-	//std::cout << "... waiting for thread to complete..." << std::endl;
+	t3.start();
+	t4.start();
 	t1.join();
 	t2.join();
-	std::cout << "... threads complete!" << std::endl;
+	t3.join();
+	t4.join();
+	std::cout << std::endl << "... threads complete!" << std::endl;
 	std::cout << "---------------- TEST THREADS ----------------" << std::endl;
 }
 
