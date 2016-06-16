@@ -1,5 +1,5 @@
 
-message (STATUS "libj++: starting the build...")
+message (STATUS "libj++: configuring the build...")
 
 # Set the version number; this will be automatically inserted 
 # by CMake into the config.h.in file, to generate config.h
@@ -28,4 +28,4 @@ file(GLOB_RECURSE LIBJPP_HDRS "*.h")
 # Build the library using the aforementioned sources and headers
 add_library(j++ SHARED ${LIBJPP_SRCS} ${LIBJPP_HDRS})
 
-message (STATUS "libj++: ... build complete!")
+message (STATUS "libj++: ... build configuration complete!")

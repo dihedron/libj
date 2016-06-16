@@ -4,8 +4,6 @@
  * See LICENSE for details and terms of use.
  */
 
-
-
 #ifndef JAVA_LANG_INTEGER
 #define JAVA_LANG_INTEGER
 

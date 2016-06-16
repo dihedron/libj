@@ -1,5 +1,5 @@
 
-message (STATUS "driver: starting the build...")
+message (STATUS "driver: configuring the build...")
 
 # Set as the preferred Threads library the pthreads
 set(CMAKE_THREAD_PREFER_PTHREAD TRUE)
@@ -26,4 +26,4 @@ add_executable(driver main.cc)
 
 target_link_libraries (driver j++ ${CMAKE_THREAD_LIBS_INIT})
 
-message (STATUS "driver: ... build complete!")
+message (STATUS "driver: ... build configuration complete!")
