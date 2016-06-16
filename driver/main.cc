@@ -102,8 +102,8 @@ public:
 
 	void run() {
 		for(int i = 0; i < 800; ++i) {
-			std::cout << symbol_;
 			Thread::yield();
+			std::cout << symbol_;			
 		}
 	}
 private:
