@@ -121,6 +121,27 @@ namespace java {
 			/// Performs a clanup on the object.
 			inline virtual void finalize() { }
 
+			/// Puts the calling Thread to sleep.
+			///
+			/// Puts the calling Thread to sleep for at least the given
+			/// number of milliseconds.
+			/// \param millis the minimum number of milliseconds to sleep.
+			static void sleep(long long millis);
+
+			/// Puts the calling Thread to sleep.
+			///
+			/// Puts the calling Thread to sleep for at least the given
+			/// number of milliseconds and nanoseconds, depending on the
+			/// precision of the system scheduler's clock.
+			/// \param millis the minimum number of milliseconds to sleep.
+			/// \param nanos the additional number of nanoseconds to sleep.
+			static void sleep(long long millis, int nanos);
+
+			/// Yield the CPU to other Threads.
+			///
+			/// Suggests the system to yield CPU time to other Threads.
+			static void yield();
+
 		protected:
 			/// Returns a clone of the current Object.
 			///

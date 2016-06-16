@@ -1,12 +1,11 @@
 
-CMAKE_MINIMUM_REQUIRED(VERSION 3.4)
+message (STATUS "libj++: starting the build...")
 
 # Set the version number; this will be automatically inserted 
 # by CMake into the config.h.in file, to generate config.h
 set (LIBJPP_VERSION_MAJOR 0)
 set (LIBJPP_VERSION_MINOR 0)
 set (LIBJPP_VERSION_PATCH 1)
-
  
 # Configure the header file used to pass some of the CMake 
 # settings to the source code
@@ -29,3 +28,4 @@ file(GLOB_RECURSE LIBJPP_HDRS "*.h")
 # Build the library using the aforementioned sources and headers
 add_library(j++ SHARED ${LIBJPP_SRCS} ${LIBJPP_HDRS})
 
+message (STATUS "libj++: ... build complete!")

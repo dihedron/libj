@@ -6,6 +6,7 @@
 
 #include <java/lang/Thread.h>
 #include <thread>
+#include <chrono>
 #include <sstream>
 #include <iomanip>				
 
@@ -69,5 +70,19 @@
 				thread_->join();
 			}
 		}
+
+		void Thread::sleep(long long millis) {
+			std::this_thread::sleep_for(std::chrono::milliseconds(millis));			
+		}
+
+		void Thread::sleep(long long millis, int nanos) {
+			long long pause = millis * 1000 + nanos;
+			std::this_thread::sleep_for(std::chrono::nanoseconds(pause));			
+		}
+
+		void Thread::yield() {
+			std::this_thread::yield();
+		}
+		
  	}
  }
