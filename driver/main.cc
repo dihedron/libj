@@ -27,6 +27,7 @@
 #include <java/lang/String.h>
 #include <java/lang/Integer.h>
 #include <java/lang/System.h>
+#include <java/lang/Thread.h>
 #include <java/lang/CloneNotSupportedException.h>
 
 using namespace java::lang;
@@ -94,6 +95,36 @@ static void testIntegers() {
     std::cout << "integer " << i << " (\"" << i.toString() << "\") has hashCode " << i.hashCode() << " and class " << i.getClass().getName() << std::endl;	
 }
 
+class MyRunnable : public Runnable {
+public:
+
+	MyRunnable(String const & symbol) : Runnable(), symbol_(symbol) { }
+
+	void run() {
+		for(int i = 0; i < 1000; ++i) {
+			std::cout << symbol_;
+		}
+	}
+private:
+	String symbol_;
+};
+
+static void testThreads() {
+	MyRunnable r1("+"), r2("-");
+
+	std::cout << "---------------- TEST THREADS ----------------" << std::endl;	
+	Thread t1(&r1), t2(&r2);
+
+	std::cout << "starting threads..." << std::endl;
+	t1.start();
+	t2.start();
+	//std::cout << "... waiting for thread to complete..." << std::endl;
+	t1.join();
+	t2.join();
+	std::cout << "... threads complete!" << std::endl;
+	std::cout << "---------------- TEST THREADS ----------------" << std::endl;
+}
+
 
 /*
  * 
@@ -107,6 +138,8 @@ int main(int argc, char** argv) {
     testStrings();
 
     testIntegers();
+
+	testThreads();
 
     std::cout << "current time millis: " << System::currentTimeMillis() << std::endl;
     

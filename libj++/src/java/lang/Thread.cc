@@ -33,8 +33,8 @@
 
 		Thread::Thread(Runnable * runnable, String const & name)
 		: runnable_(runnable)
-		, thread_(nullptr),
-		name_(name) {			
+		, thread_(nullptr)
+		, name_(name) {			
 		}
 
 		long long Thread::getId() const {
@@ -47,14 +47,26 @@
 			return id;
 		}
 
+		static void bridge(Runnable * runnable) {
+			if(runnable != nullptr) {
+				runnable->run();
+			}
+		}		
+
 		void Thread::start() {
 			if(thread_ != nullptr) {
 				throw /*IllegalthreadState*/Exception("Cannot start a Thread twice.");
 			}
 			if(runnable_ != nullptr) {
-//				thread_ = new std::thread(runnable_->run, this->runnable_);
+				thread_ = new std::thread(bridge, this->runnable_);
 			} else {
-//				thread_ = new std::thread(run, this);
+				thread_ = new std::thread(bridge, this);
+			}
+		}
+
+		void Thread::join() {
+			if(thread_ != nullptr) {
+				thread_->join();
 			}
 		}
  	}

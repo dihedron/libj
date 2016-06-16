@@ -90,7 +90,18 @@ namespace java {
 				return name_;
 			}
 
+			/// Starts the thread.
+			///
+			/// Starts the thread, executing the logic that is either in the
+			/// provided Runnable, or in the overridden run() method.
 			void start();
+
+			/// Waits for the thread to finish.
+			///
+			/// Puts the calling thread in wait for the given thread to 
+			/// complete its processing; this method only returns when the
+			/// Thread object has finished.
+			void join();
 
 			/// The actual implementation of the Thread.
 			///
