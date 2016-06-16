@@ -17,4 +17,5 @@
 #	define 	interface 	class
 #endif
 
+
 #endif // LIBJPP_MACROS

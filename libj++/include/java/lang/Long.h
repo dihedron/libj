@@ -4,8 +4,6 @@
  * See LICENSE for details and terms of use.
  */
 
-
-
 #ifndef JAVA_LANG_LONG
 #define JAVA_LANG_LONG
 
@@ -25,8 +23,9 @@ namespace java {
 			template <typename T> static inline String toHexString(T const & t);
 						
 			Long() : value_(0) { }
-			Long(long value) : value_(value) { }
-			Long(long long value) : value_(value) { }
+			Long(jshort value) : value_(value) { }
+			Long(jint value) : value_(value) { }
+			Long(jlong value) : value_(value) { }
 			Long(const Long & other) : Number(other), value_(other.value_) { }
 
 			virtual ~Long() { }
@@ -49,7 +48,7 @@ namespace java {
 			/// involve rounding or truncation
 			/// \return the numeric value represented by this object after 
 			/// conversion to type byte.
-			virtual byte byteValue() const;
+			virtual jbyte byteValue() const;
 
 			/// Returns the value of the specified number as a double.
 			///
@@ -67,13 +66,21 @@ namespace java {
 			/// conversion to type float.
 			virtual float floatValue() const;
 
+			/// Returns the value of the specified number as a short.
+			///
+			/// Returns the value of the specified number as a short. This may 
+			/// involve rounding or truncation.
+			/// \return the numeric value represented by this object after 
+			/// conversion to type short.
+			virtual jshort shortValue() const;						
+
 			/// Returns the value of the specified number as an int.
 			///
 			/// Returns the value of the specified number as an int. This may 
 			/// involve rounding.
 			/// \return the numeric value represented by this object after 
 			/// conversion to type int.
-			virtual int intValue() const;
+			virtual jint intValue() const;
 
 			/// Returns the value of the specified number as a long.
 			///
@@ -81,38 +88,26 @@ namespace java {
 			/// involve rounding.
 			/// \return the numeric value represented by this object after 
 			/// conversion to type long.
-			virtual long longValue() const;
+			virtual jlong longValue() const;
 
-			/// Returns the value of the specified number as a short.
-			///
-			/// Returns the value of the specified number as a short. This may 
-			/// involve rounding or truncation.
-			/// \return the numeric value represented by this object after 
-			/// conversion to type short.
-			virtual short shortValue() const;						
 
-			operator int() const { return (int)value_; };
+			operator int() const { return (int)value_; }
 
-			Long operator+(int value) const { return Long(value_ + value); }
-			Long operator+(long value) const { return Long(value_ + (long long)value); }	
-			Long operator+(long long value) const { return Long(value_ + (long long)value); }
+			Long operator+(jshort value) const { return Long(value_ + (jlong)value); }
+			Long operator+(jint value) const { return Long(value_ + (jlong)value); }	
+			Long operator+(jlong value) const { return Long(value_ + (jlong)value); }
 
 			Long operator+(Long const & other) const { return Long(value_ + other.value_); }
 
 			friend std::ostream & operator<<(std::ostream & os, Long const & integer);
+			
 		private:
-			long long value_;
+			/// The underlying 64-bits value.
+			jlong value_;
 		};
-
-		template <typename T> 
-		String Long::toHexString(T const & t) {
-			std::stringstream stream;
-			stream << "0x" << std::hex << t;
-			return String(stream.str());
-		}
 	}
 }
 
 
-#endif // JAVA_LANG_INTEGER
+#endif // JAVA_LANG_LONG
 

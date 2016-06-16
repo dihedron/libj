@@ -48,7 +48,7 @@ namespace java {
 			/// involve rounding or truncation
 			/// \return the numeric value represented by this object after 
 			/// conversion to type byte.
-			virtual byte byteValue() const = 0;
+			virtual jbyte byteValue() const = 0;
 
 			/// Returns the value of the specified number as a double.
 			///
@@ -72,7 +72,7 @@ namespace java {
 			/// involve rounding.
 			/// \return the numeric value represented by this object after 
 			/// conversion to type int.
-			virtual int intValue() const = 0;
+			virtual jint intValue() const = 0;
 
 			/// Returns the value of the specified number as a long.
 			///
@@ -80,7 +80,7 @@ namespace java {
 			/// involve rounding.
 			/// \return the numeric value represented by this object after 
 			/// conversion to type long.
-			virtual long longValue() const = 0;
+			virtual jlong longValue() const = 0;
 
 			/// Returns the value of the specified number as a short.
 			///
@@ -88,7 +88,7 @@ namespace java {
 			/// involve rounding or truncation.
 			/// \return the numeric value represented by this object after 
 			/// conversion to type short.
-			virtual short shortValue() const = 0;
+			virtual jshort shortValue() const = 0;
 
 			/// Performs a clanup on the object.
 			inline virtual void finalize() { }

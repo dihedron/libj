@@ -13,8 +13,8 @@ namespace java {
 		const Class Long::klass("java.lang.Long", Number::klass);
 
 
-		byte Long::byteValue() const {
-			return (byte)value_;
+		jbyte Long::byteValue() const {
+			return (jbyte)value_;
 		}
 
 		double Long::doubleValue() const {
@@ -25,16 +25,16 @@ namespace java {
 			return (float)value_;
 		}
 
-		int Long::intValue() const {
-			return (int)value_;
+		jshort Long::shortValue() const {
+			return (jshort)value_;
 		}
 
-		long Long::longValue() const {
-			return (long)value_;
+		jint Long::intValue() const {
+			return (jint)value_;
 		}
 
-		short Long::shortValue() const {
-			return (short)value_;
+		jlong Long::longValue() const {
+			return (jlong)value_;
 		}
 
 		String Long::toString() const {			

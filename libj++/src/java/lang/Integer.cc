@@ -5,7 +5,7 @@
  */
 
 #include <java/lang/Integer.h>
-#include <java/lang/String.h>
+//#include <java/lang/String.h>
 
 namespace java {
 	namespace lang {
@@ -13,8 +13,8 @@ namespace java {
 		const Class Integer::klass("java.lang.Integer", Number::klass);
 
 
-		byte Integer::byteValue() const {
-			return (byte)value_;
+		jbyte Integer::byteValue() const {
+			return (jbyte)value_;
 		}
 
 		double Integer::doubleValue() const {
@@ -25,16 +25,16 @@ namespace java {
 			return (float)value_;
 		}
 
-		int Integer::intValue() const {
+		jshort Integer::shortValue() const {
+			return (jshort)value_;
+		}
+
+		jint Integer::intValue() const {
 			return value_;
 		}
 
-		long Integer::longValue() const {
-			return (long)value_;
-		}
-
-		short Integer::shortValue() const {
-			return (short)value_;
+		jlong Integer::longValue() const {
+			return (jlong)value_;
 		}
 
 		String Integer::toString() const {			

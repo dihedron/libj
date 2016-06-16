@@ -25,19 +25,31 @@ namespace java {
 			/// Default constructor.
 			///
 			/// Creates a new Integer object, initialising its value to 0.
-			Integer() : Number(), value_(0) { }
+			Integer() : value_(0) { }
 
 			/// Constructor.
 			///
 			/// Creates a new Integer, initialising it to the given value.
 			/// \param value the value to use for initialisation.
-			Integer(int value) : Number(), value_(value) { }
+			Integer(jbyte value) : value_(value) { }
+
+			/// Constructor.
+			///
+			/// Creates a new Integer, initialising it to the given value.
+			/// \param value the value to use for initialisation.
+			Integer(jshort value) : value_(value) { }
+
+			/// Constructor.
+			///
+			/// Creates a new Integer, initialising it to the given value.
+			/// \param value the value to use for initialisation.
+			Integer(jint value) : value_(value) { }
 
 			/// Copy constructor.
 			///
 			/// Creates a new Integer, copying its value from the provided one.
 			/// \param other the Integer to copy the internal status from.
-			Integer(const Integer & other) : Number(), value_(other.value_) { }
+			Integer(const Integer & other) : value_(other.value_) { }
 
 			/// Assignment operator.
 			/// 
@@ -65,7 +77,7 @@ namespace java {
 			/// involve rounding or truncation
 			/// \return the numeric value represented by this object after 
 			/// conversion to type byte.
-			virtual byte byteValue() const;
+			virtual jbyte byteValue() const;
 
 			/// Returns the value of the specified number as a double.
 			///
@@ -83,13 +95,21 @@ namespace java {
 			/// conversion to type float.
 			virtual float floatValue() const;
 
+			/// Returns the value of the specified number as a short.
+			///
+			/// Returns the value of the specified number as a short. This may 
+			/// involve rounding or truncation.
+			/// \return the numeric value represented by this object after 
+			/// conversion to type short.
+			virtual jshort shortValue() const;
+
 			/// Returns the value of the specified number as an int.
 			///
 			/// Returns the value of the specified number as an int. This may 
 			/// involve rounding.
 			/// \return the numeric value represented by this object after 
 			/// conversion to type int.
-			virtual int intValue() const;
+			virtual jint intValue() const;
 
 			/// Returns the value of the specified number as a long.
 			///
@@ -97,45 +117,25 @@ namespace java {
 			/// involve rounding.
 			/// \return the numeric value represented by this object after 
 			/// conversion to type long.
-			virtual long longValue() const;
-
-			/// Returns the value of the specified number as a short.
-			///
-			/// Returns the value of the specified number as a short. This may 
-			/// involve rounding or truncation.
-			/// \return the numeric value represented by this object after 
-			/// conversion to type short.
-			virtual short shortValue() const;
+			virtual jlong longValue() const;
 
 			/// Returns the 
 			virtual String toString() const;
 
+			operator int() const { return (int)value_; };
 
-
-			operator int() const { return value_; };
-
-			Integer operator+(int value) const { return Integer(value_ + value); }
-			Integer operator+(long value) const { return Integer(value_ + (int)value); }	
-			Integer operator+(long long value) const { return Integer(value_ + (int)value); }
+			Integer operator+(jshort value) const { return Integer(value_ + value); }
+			Integer operator+(jint value) const { return Integer(value_ + value); }	
+			Integer operator+(jlong value) const { return Integer(value_ + (jint)value); }
 
 			Integer operator+(Integer const & other) const { return Integer(value_ + other.value_); }
 
 			friend std::ostream & operator<<(std::ostream & os, Integer const & integer);
 
-			inline virtual void finalize() {
-				//std::cout << "finalize in Integer" << std::endl;
-			}
+			inline virtual void finalize() { }
 		private:
-			int value_;
-
+			jint value_;
 		};
-
-		template <typename T> 
-		String Integer::toHexString(int value) {
-			std::stringstream stream;
-			stream << "0x" << std::hex << value;
-			return String(stream.str().c_str());
-		}
 	}
 }
 

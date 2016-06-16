@@ -8,12 +8,24 @@
 #ifndef JAVA_LANG_VALUETYPES
 #define JAVA_LANG_VALUETYPES
 
-/// The byte type.
-typedef unsigned char	byte;
 
 /// The boolean type, with a proper C++ name.
-typedef bool 			boolean;
+typedef bool 			jboolean;
 
+/// The character type, with a proper C++ name.
+typedef char			jchar;
+
+/// The byte type (8 bits).
+typedef unsigned char	jbyte;
+
+/// The short integer type (usually 16 bits).
+typedef short			jshort;
+
+/// The integer type (usually 32 bits).
+typedef int				jint;
+
+/// The long integer type (usually 64 bits).
+typedef long long		jlong;
 
 #endif // JAVA_LANG_VALUETYPES
 

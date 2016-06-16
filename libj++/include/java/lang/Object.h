@@ -66,7 +66,7 @@ namespace java {
 			/// \param other the object to be compared with this one.
 			/// \return true if the other object is the same instance 
 			/// as this one.
-			inline virtual boolean equals(Object const & other) const { 
+			inline virtual jboolean equals(Object const & other) const { 
 				return (this == &other); 
 			}
 						
@@ -77,8 +77,8 @@ namespace java {
 			/// memory, so that no two objects can share the same address 
 			/// unless they are the same object.
 			/// \return the object's hash code.
-			inline virtual long long hashCode() const { 
-				return reinterpret_cast<long long>(this);
+			inline virtual jlong hashCode() const { 
+				return reinterpret_cast<jlong>(this);
 			}
 
 			/// Returns the object's class.
