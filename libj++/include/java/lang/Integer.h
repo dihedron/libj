@@ -20,8 +20,6 @@ namespace java {
 			/// The Integers' Class object.
 			static const Class klass;				  
 
-			template <typename T> static inline String toHexString(int value);
-
 			/// Default constructor.
 			///
 			/// Creates a new Integer object, initialising its value to 0.

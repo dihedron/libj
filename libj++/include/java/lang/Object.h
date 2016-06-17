@@ -4,8 +4,6 @@
  * See LICENSE for details and terms of use.
  */
 
-
-
 #ifndef JAVA_LANG_OBJECT
 #define JAVA_LANG_OBJECT
 
@@ -17,6 +15,7 @@ namespace java {
 	namespace lang {
 				
 		class Class;
+		class Interface;
 		class String;
 		
 		/// The root of the object's hierarchy.
@@ -30,10 +29,7 @@ namespace java {
 
 			/// The shared reference to the Class object for this
 			/// class; all object share the same instance.
-			static const Class klass;						
-												
-			/// Default constructor.
-			Object() { }
+			static const Class klass;
 						
 			/// Compares this object to another for equality.
 			///
@@ -77,7 +73,7 @@ namespace java {
 			/// \return whether this Object can be cast to the given type.
 			jboolean instanceOf(Class const & otherClass) const;
 
-			jboolean instanceOf(String const & otherInterface) const;
+			jboolean instanceOf(Interface const & otherInterface) const;
 
 			/// Returns a string preresentation of the object.
 			///

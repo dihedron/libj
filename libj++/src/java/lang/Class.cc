@@ -11,36 +11,21 @@
 namespace java {
 	namespace lang {
 		
-		const Class Class::klass("java.lang.Class", Object::klass);
-
-		Class::Class(String const & name) 
+		Class::Class(String const & name, Class const * super) 
 			: name_(name)
-			, super_(nullptr) {
+			, super_(super) {
 		}
 
-		Class::Class(String const & name, Class const & super) 
+		Class::Class(String const & name, Class const * super, std::initializer_list<Interface const *> interfaces) 
 			: name_(name)
-			, super_(&super) {
-		}
-
-		Class::Class(String const & name, Class const & super, std::initializer_list<char const *> interfaces) 
-			: name_(name)
-			, super_(&super) {
+			, super_(super) {
 			if(interfaces.size() > 0) {
 				for(auto ref : interfaces) {
 					interfaces_.push_back(ref);
 				}
 			}
 		}
-
-		std::list<String> Class::getInterfaces() const {			
-			std::list<String> interfaces(interfaces_);
-			if(super_ != nullptr) {
-				interfaces.merge(super_->getInterfaces());
-			}
-			return interfaces;
-		}
-
+		
 		String Class::toString() const {
 			// the name of the class must be hardcoded in this case, otherwise 
 			// we would end up in an infinite loop between toString() and getClass()

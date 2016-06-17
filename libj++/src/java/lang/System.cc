@@ -10,8 +10,6 @@
 
  namespace java {
  	namespace lang {
- 		const Class System::klass("java.lang.System", Object::klass);
-
  		jlong System::currentTimeMillis() {
  			return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
  		}

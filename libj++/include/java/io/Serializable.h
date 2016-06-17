@@ -9,6 +9,7 @@
 
 #include <java/lang/Object.h>
 #include <java/lang/String.h>
+#include <java/lang/Interface.h>
 
 namespace java {
 	namespace io {
@@ -16,8 +17,9 @@ namespace java {
 		/// marker interface.
 		interface Serializable {
 		public:
-			/// The name of the interface.
-			static constexpr char const * name = "java.io.Serializable"; 
+			/// The shared reference to the Interface object for this
+			/// class; all Serializables share the same instance.
+			static const java::lang::Interface klass;
 		};				
 	}
 }

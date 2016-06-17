@@ -14,8 +14,8 @@ namespace java {
 		/// A pure virtual class implementing the Runnable interface.
 		interface Runnable {
 		public:
-			/// The name of the interface.
-			static constexpr char const * name = "java.lang.Runnable";
+			/// The Runnable Interface object.
+			static const Interface klass;			
 
 			/// The method implementing the logic to be run in a separate thread.
 			///

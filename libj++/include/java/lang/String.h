@@ -20,7 +20,7 @@ namespace java {
 		public:
 
 			/// The Strings' shared class object.
-			static Class klass;		
+			static const Class klass;		
 						
 			/// Factory method for converting values to a String.
 			///
@@ -105,13 +105,17 @@ namespace java {
 			///
 			/// Returns a Class object representing this object's class.
 			/// \return a Class object representing Strings.
-			virtual Class & getClass() const;
+			inline virtual Class const & getClass() const {
+				return String::klass;
+			}
 
 			/// Returns the String itself.
 			///
 			/// Overrides the generit tostring() method returning the String itself.
 			/// \return the string itself.
-			virtual String toString() const;
+			inline virtual String toString() const {
+				return *this;
+			}
 
 			String operator+(String const & string) const;
 			String operator+(long value) const;	

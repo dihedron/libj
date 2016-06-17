@@ -15,8 +15,8 @@ namespace java {
 	namespace lang {
 		class Throwable : public Object, public java::io::Serializable {
 		public:
-			/// The Numbers' Class object.
-			static const Class klass;
+			/// The Throwable Interface object.
+			static const Interface klass;
 
 			/// Default constructor.
 			Throwable();
@@ -79,8 +79,7 @@ namespace java {
 			virtual String toString() const;
 			
 			/// Cleans up the root Throwable pointer, if any.
-			inline virtual void finalize() {
-				//std::cout << "finalize in Throwable" << std::endl;				
+			inline virtual void finalize() {				
 				if(cause_ != nullptr) {
 					delete cause_;
 					cause_ = nullptr;

@@ -10,8 +10,6 @@
 namespace java {
 	namespace lang {
 
-		const Class Throwable::klass("java.lang.Throwable", Object::klass, { java::io::Serializable::name });
-
 		Throwable::Throwable() 
 			: message_("")
 			, cause_(nullptr) {
@@ -20,8 +18,7 @@ namespace java {
 
 		Throwable::Throwable(String const & message) 
 			: message_(message)
-			, cause_(nullptr) {
-			//std::cout << "in Throwable(String)" << std::endl; 			
+			, cause_(nullptr) { 			
 		}
 
 		Throwable::Throwable(String const & message, Throwable const & cause)

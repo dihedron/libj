@@ -5,12 +5,9 @@
  */
 
 #include <java/lang/Integer.h>
-//#include <java/lang/String.h>
 
 namespace java {
 	namespace lang {
-
-		const Class Integer::klass("java.lang.Integer", Number::klass);
 
 		jbyte Integer::byteValue() const {
 			return (jbyte)value_;

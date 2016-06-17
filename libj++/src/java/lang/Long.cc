@@ -10,9 +10,6 @@
 namespace java {
 	namespace lang {
 
-		const Class Long::klass("java.lang.Long", Number::klass);
-
-
 		jbyte Long::byteValue() const {
 			return (jbyte)value_;
 		}

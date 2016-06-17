@@ -8,16 +8,18 @@
 #define JAVA_LANG_CLONEABLE
 
 #include <java/lang/Object.h>
+#include <java/lang/Interface.h>
 
 namespace java {
-	namespace io {
+	namespace lang {
 		/// A pure virtual class implementing the Cloneable
 		/// marker interface.
 		interface Cloneable {
 		public:
-			/// The name of the interface.
-			static constexpr char const * name = "java.lang.Cloneable"; 
-		};				
+
+			/// The shared reference to the Interface object for this
+			/// class; all object share the same instance.
+			static const Interface klass;			};				
 	}
 }
 

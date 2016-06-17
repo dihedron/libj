@@ -19,21 +19,6 @@ namespace java {
 			/// The Numbers' Class object.
 			static const Class klass;
 
-			/// Default constructor.
-			Number() { }
-
-			/// Copy constructor.
-			///
-			/// Creates a number object, initialising its internal status
-			/// with that of the provided object.
-			/// \param other the object to copy the internal status from.
-			Number(Number const & other) { }
-
-			/// Virtual destructor.
-			virtual ~Number() {
-				finalize();
-			}
-
 			/// Returns the object's class.
 			/// 
 			/// Returns the object's class object.

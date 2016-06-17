@@ -12,29 +12,24 @@
 #include <initializer_list>
 #include <list>
 
+
 namespace java {
 	namespace lang {
 
+		class Interface;
+
 		class Class : public Object {
 		public:
-			/// The Class' object Class.
-			static const Class klass;				 
-	
-			/// Constructor.
-			///
-			/// Creates an instance of a Class object; this is only
-			/// relevant when creating the Class of the Object class,
-			/// since it initiaalises the parent Class to nullptr (which
-			//  is noly true at the very root of the hierarchy).
-			/// \param name the name of the class
-			Class(String const & name);
+
+			/// The Class objects' Class.
+			static const Class klass;
 
 			/// Constructor.
 			///
 			/// Creates an instance of a Class object.
 			/// \param name the name of the class
 			/// \param super a reference to the superclass
-			Class(String const & name, Class const & super);
+			Class(String const & name, Class const * super = nullptr);
 
 			/// Constructor.
 			///
@@ -44,8 +39,16 @@ namespace java {
 			/// stored there. 
 			/// \param name the name of the class
 			/// \param super a reference to the superclass
-			/// \param a variable list of Strings representing the implemented interfaces
-			Class(String const & name, Class const & super, std::initializer_list<char const *> interfaces);
+			/// \param a variable list of implemented Interfaces
+			Class(String const & name, Class const * super, std::initializer_list<Interface const *> interfaces);			
+
+			/// Returns whether this type represents an Interface.
+			///
+			/// Returns whether this type represents an Interface.
+			/// \return whether this type represents an Interface.
+			inline virtual jboolean isInterface() const {
+				return false;
+			}
 
 			/// Returns the Class object representing this class.
 			///
@@ -64,9 +67,7 @@ namespace java {
 			/// \return the superclass of this Class, or nullptr.
 			inline Class const * getSuperclass() const {
 				return super_;
-			}
-
-			std::list<String> getInterfaces() const;
+			}			
 
 			/// Returns the name of this Class.
 			///
@@ -92,8 +93,18 @@ namespace java {
 			/// \return the canonical name of this Class
 			inline String getCanonicalName() const {
 				return getName();
-			}			
+			}
 
+			/// Returns a (possibly empty) list of interfaces.
+			///
+			/// Returns the list of interfaces directly implemented
+			/// by this class, plus all those implemented by superclasses;
+			/// this list can be empty.
+			/// \return the list of implemented interfaces.
+			inline std::list<Interface const *> getInterfaces() const {
+				return interfaces_;
+			}
+			
 			/// Returns a String representation of this Class.
 			/// 
 			/// Returns a String representation of this Class, including 
@@ -102,17 +113,22 @@ namespace java {
 			/// \return a String representation of this class.
 			virtual String toString() const;
 
+			/// Checks whether this Class is equal to the other.
+			///
+			/// Checks whether this Class is equal to the other.
+			/// \return whether this Class is equal to the other.
 			jboolean operator==(Class const & other) const;
-				
+
 		private:
 			/// The fully qualified name of the class.
 			const String name_;
 
 			/// A pointer to the superclass, if any, nullptr otherwise. 
-			const Class * super_;
+			const Class * super_;			
 
-			// TODO: this must be a list, so no need to keep a count!
-			std::list<String> interfaces_;
+			/// A (possibly empty) list of directly implemented or
+			/// extended interfaces.
+			std::list<Interface const *> interfaces_;
 		};				
 	}
 }

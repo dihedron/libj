@@ -11,26 +11,16 @@
 namespace java {
 	namespace lang {
 
-		Class String::klass("java.lang.String");
-
-		Class & String::getClass() const { 
-			 return String::klass; 
-		}
-
-		String String::toString() const {			
-			return *this;
-		}		
-
 		String String::operator+(String const & string) const {
 			return String(this->value_ + string.value_);
 		}
 		
 		String String::operator+(long value) const {
-			return valueOf(value);//String("copia con intero");
+			return valueOf(value);
 		}
 
 		String String::operator+(long long value) const {
-			return valueOf(value);//String("copia con long long");
+			return valueOf(value);
 		}
 		
 		std::ostream & operator<<(std::ostream & os, String const & string) {

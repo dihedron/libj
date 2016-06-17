@@ -10,7 +10,6 @@
 
  namespace java {
  	namespace lang {
- 		const Class Thread::klass("java.lang.Thread", Object::klass, { "java.lang.Runnable" });
 
 		Thread::Thread()
 		: runnable_(nullptr)

@@ -7,14 +7,13 @@
 
 #include <java/lang/Object.h>
 #include <java/lang/Class.h>
+#include <java/lang/Interface.h>
 #include <java/lang/String.h>
 #include <java/lang/Number.h>
 
 namespace java {
 	namespace lang {
 				
-		const Class Object::klass("java.lang.Object");
-
 		jboolean Object::instanceOf(Class const & otherClass) const {
 			jboolean result = false;
 			Class const & thisClass = getClass(); 
@@ -34,9 +33,9 @@ namespace java {
 			return result;
 		}
 
-		jboolean Object::instanceOf(String const & otherInterface) const {
+		jboolean Object::instanceOf(Interface const & otherInterface) const {
 			for(auto s: getClass().getInterfaces()) {
-				if(s == otherInterface) {
+				if(*s == otherInterface) {
 					return true;
 				}
 			}
