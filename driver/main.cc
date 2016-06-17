@@ -6,6 +6,7 @@
 
 #include <cstdlib>
 #include <iostream>
+#include <vector>
 
 #include <config.h>
 
@@ -97,24 +98,33 @@ private:
 	String symbol_;
 };
 
-static void testThreads() {
-	MyRunnable r1("1"), r2("2"), r3("3"), r4("4");
-	Thread t1(&r1), t2(&r2), t3(&r3), t4(&r4);
+constexpr int MAX_THREADS = 10;
 
-	std::cout << "---------------- TEST THREADS ----------------" << std::endl;	
+static void testThreads() {
+	std::cout << "---------------- TEST THREADS ----------------" << std::endl;
+	std::vector<MyRunnable *> runnables;
+	std::vector<Thread> threads;
+	for(int i = 0; i < MAX_THREADS; ++ i) {
+		MyRunnable * r = new MyRunnable(String::valueOf(i));
+		runnables.push_back(r);
+		threads.push_back(Thread(r));
+	}
+
 	std::cout << "starting threads..." << std::endl;
-	t1.start();
-	t2.start();
-	t3.start();
-	t4.start();
-	t1.join();
-	t2.join();
-	t3.join();
-	t4.join();
+	for(auto & t : threads) {
+		t.start();
+	}
+	for(auto & t : threads) {
+		t.join();
+	}
+
 	std::cout << std::endl << "... threads complete!" << std::endl;
 	std::cout << "---------------- TEST THREADS ----------------" << std::endl;
-}
 
+	for(auto r : runnables) {
+		delete r;
+	}
+}
 
 /*
  * 

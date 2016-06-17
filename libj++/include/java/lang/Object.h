@@ -31,32 +31,9 @@ namespace java {
 			/// The shared reference to the Class object for this
 			/// class; all object share the same instance.
 			static const Class klass;						
-						
+												
 			/// Default constructor.
 			Object() { }
-
-			/// Constructor.
-			///
-			///	Creates a new object, copying the contents of another
-			/// object instance.
-			/// \param other the object to be copied
-			Object(const Object & other) { }
-	
-			/// Destructor.
-			///
-			/// The Object's destructor does nothing.
-			inline virtual ~Object() {
-				// I know finalize() is virtual, but that's exactly why
-				// I call it here: each object in the hierarchy has a chance
-				// to call its own implementation and release its resources.
-				finalize(); 
-			}
-
-			/// Assignment operator.
-			///
-			/// A do-nothing assignment operator.
-			/// \param other the object to copy from.
-			Object & operator=(Object const & other) { return *this; }
 						
 			/// Compares this object to another for equality.
 			///
@@ -106,7 +83,7 @@ namespace java {
 			/// the stack the current Object, in order for it to be
 			/// transferred back to the caller.
 			/// \return a copy of the current object.
-			inline virtual Object clone() const { return Object(*this); }
+			inline virtual Object clone() const { return *this; }
 
 			/// Performs a final cleanup.
 			/// 

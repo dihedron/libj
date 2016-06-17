@@ -20,16 +20,32 @@ namespace java {
 			/// The Longs' Class object.
 			static const Class klass;
 
-			template <typename T> static inline String toHexString(T const & t);
-						
+			/// Default constructor.						
 			Long() : value_(0) { }
+
+			/// Constructor.
+			/// 
+			/// Constructs the Long given an 8-bits value.
+			/// \param value the value used to initialise the Long. 
+			Long(jbyte value) : value_(value) { }
+
+			/// Constructor.
+			/// 
+			/// Constructs the Long given a 16-bits value.
+			/// \param value the value used to initialise the Long. 
 			Long(jshort value) : value_(value) { }
+
+			/// Constructor.
+			/// 
+			/// Constructs the Long given a 32-bits value.
+			/// \param value the value used to initialise the Long. 
 			Long(jint value) : value_(value) { }
+
+			/// Constructor.
+			/// 
+			/// Constructs the Long given a 64-bits value.
+			/// \param value the value used to initialise the Long. 			
 			Long(jlong value) : value_(value) { }
-			Long(const Long & other) : Number(other), value_(other.value_) { }
-
-			virtual ~Long() { }
-
 
 			/// Returns this Long's class object.
 			///
@@ -38,9 +54,7 @@ namespace java {
 			/// \return the Class object.
 			inline virtual Class const & getClass() const {
 				return Long::klass; 
-			}
-
-			virtual String toString() const;
+			}			
 
 			/// Returns the value of the specified number as a byte.
 			/// 
@@ -49,22 +63,6 @@ namespace java {
 			/// \return the numeric value represented by this object after 
 			/// conversion to type byte.
 			virtual jbyte byteValue() const;
-
-			/// Returns the value of the specified number as a double.
-			///
-			/// Returns the value of the specified number as a double. This may 
-			/// involve rounding.
-			/// \return the numeric value represented by this object after 
-			/// conversion to type double.
-			virtual double doubleValue() const;
-
-			/// Returns the value of the specified number as a float.
-			///
-			/// Returns the value of the specified number as a float. This may 
-			/// involve rounding.
-			/// \return the numeric value represented by this object after 
-			/// conversion to type float.
-			virtual float floatValue() const;
 
 			/// Returns the value of the specified number as a short.
 			///
@@ -90,6 +88,27 @@ namespace java {
 			/// conversion to type long.
 			virtual jlong longValue() const;
 
+			/// Returns the value of the specified number as a float.
+			///
+			/// Returns the value of the specified number as a float. This may 
+			/// involve rounding.
+			/// \return the numeric value represented by this object after 
+			/// conversion to type float.
+			virtual float floatValue() const;
+
+			/// Returns the value of the specified number as a double.
+			///
+			/// Returns the value of the specified number as a double. This may 
+			/// involve rounding.
+			/// \return the numeric value represented by this object after 
+			/// conversion to type double.
+			virtual double doubleValue() const;
+
+			/// Returns the Long as a String.
+			///
+			/// Returns the String presentation of this Long.
+			/// \return the Long as a String.
+			virtual String toString() const;
 
 			operator int() const { return (int)value_; }
 
@@ -100,7 +119,7 @@ namespace java {
 			Long operator+(Long const & other) const { return Long(value_ + other.value_); }
 
 			friend std::ostream & operator<<(std::ostream & os, Long const & integer);
-			
+
 		private:
 			/// The underlying 64-bits value.
 			jlong value_;

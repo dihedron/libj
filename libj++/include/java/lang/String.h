@@ -36,30 +36,11 @@ namespace java {
 			/// Creates an empty string.
 			String() : value_("") { }
 
-			/// Copy constructor.
-			///
-			/// Creates a new String, copying the other object's contents.
-			/// \param other the string to copy from.
-			String(const String & other) : value_(other.value_) { }
-
 			/// Constructor.
 			///
 			/// Creates a String initialising it to the given C-style string.
 			/// \param string the C-style string to copy from.
 			String(const char * string) : value_(string) { }  
-
-			/// Destructor.
-			///
-			/// Cleans up the object.
-			virtual ~String() { 
-				finalize();
-			}
-
-			/// Assignment operator.
-			///
-			/// A do-nothing assignment operator.
-			/// \param other the object to copy from.
-			String & operator=(String const & other);
 
 			/// Returns the last occurrence of the specified character.
 			/// 
@@ -157,9 +138,6 @@ namespace java {
 			}			 
 
 			friend std::ostream & operator<<(std::ostream & os, String const & string);
-
-			/// Cleans up the object's internal status.
-			inline virtual void finalize() { }
 
 		private:
 			/// Constructor.

@@ -4,11 +4,7 @@
  * See LICENSE for details and terms of use.
  */
 
-#include <java/lang/Thread.h>
-#include <thread>
-#include <chrono>
-#include <sstream>
-#include <iomanip>				
+#include <java/lang/Thread.h>				
 
 #include <assert.h>
 
@@ -38,8 +34,8 @@
 		, name_(name) {			
 		}
 
-		long long Thread::getId() const {
-			long long id = -1;
+		jlong Thread::getId() const {
+			jlong id = -1;
 			if(thread_ != nullptr) {
 				std::stringstream stream;
 				stream << thread_->get_id();
@@ -48,6 +44,17 @@
 			return id;
 		}
 
+		/// A bridge between Runnable::run() and std::thread.
+		///
+		/// This static function is used as a bridge between the
+		/// Runnable's run() method and the way the std::thread
+		/// API expects a __cdecl or __stdcall (that is, non 
+		/// _thiscall) method as the implementation of the Thread's 
+		/// business logic; the trick is provided by the first
+		/// parameter to this method, which is the Runnable pointer
+		/// and can therefore be used to access the virtual run() 
+		/// method.
+		/// \param runnable a pointer to the Runnable to execute. 
 		static void bridge(Runnable * runnable) {
 			if(runnable != nullptr) {
 				runnable->run();
@@ -82,7 +89,6 @@
 
 		void Thread::yield() {
 			std::this_thread::yield();
-		}
-		
+		}	
  	}
  }

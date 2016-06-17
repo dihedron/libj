@@ -9,15 +9,6 @@
 
 namespace java {
 	namespace lang {
-
 		const Class Exception::klass("java.lang.Exception", Throwable::klass);
-
-		Exception & Exception::operator=(Exception const & other) {
-			if(this != &other) {
-				Throwable::operator=((Throwable const &)other);
-				//((Throwable *)this)->operator=((Throwable const &)other);
-			}
-			return *this;
-		}
 	}
 }

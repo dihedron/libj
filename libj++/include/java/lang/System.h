@@ -9,8 +9,8 @@
 #define JAVA_LANG_SYSTEM
 
 #include <java/lang/Object.h>
-#include <macros.h>
-#include <iostream>
+#include <java/lang/CloneNotSupportedException.h>
+#include <java/lang/UnsupportedOperationException.h>
 
 namespace java {
 	namespace lang {
@@ -32,7 +32,7 @@ namespace java {
 			static const Class klass;
 
 
-			static long long currentTimeMillis();
+			static jlong currentTimeMillis();
 
 			/// Returns the object's class.
 			/// 
@@ -53,40 +53,17 @@ namespace java {
 		private:
 			
 			/// Default constructor.
-			System() : Object() { throw new Object(); }
-
-			/// Constructor.
-			///
-			///	Creates a new object, copying the contents of another
-			/// object instance.
-			/// \param other the object to be copied
-			System(const System & other) : Object(other) { throw new Object(); }
-	
-			/// Destructor.
-			///
-			/// The default destructor does nothing, except invoking
-			/// the finalize() method.
-			virtual ~System() { 
-				finalize();
-			}
-
-			/// Assignment operator.
-			///
-			/// A do-nothing assignment operator.
-			/// \param other the object to copy from.
-			System & operator=(System const & other) { throw new Object(); return *this; }
+			System() : Object() { throw new UnsupportedOperationException("Cannot instantiate an object of class java.lang.System."); }
 					
 		protected:
 
-			virtual Object clone() const { throw new Object(); }
-
-			/// Performs a final cleanup.
-			/// 
-			/// Cleans up any resources associated with this object,
-			/// before its associated memory is recalled.
-			virtual void finalize() { }
+			/// Performs a clone of the System, object.
+			///
+			/// The clone operation is not supported, so this
+			/// method will throw a clonenotSupportedException.
+			virtual Object clone() const { throw new CloneNotSupportedException("Cannot clone an object of type java.lang.System."); }
 		};
 	}
 }
-#endif // JAVA_LANG_OBJECT
+#endif // JAVA_LANG_SYSTEM
 

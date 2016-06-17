@@ -19,13 +19,6 @@ namespace java {
 			/// Default constructor.
 			Exception() { }
 
-			/// Copy constructor.
-			///
-			/// Creates an Exception object, initialising its internal status
-			/// with that of the provided object.
-			/// \param other the object to copy the internal status from.
-			Exception(Exception const & other) : Throwable(other) { }
-
 			/// Constructor.
 			/// 
 			/// Initialises the Exception with a message and no
@@ -41,18 +34,6 @@ namespace java {
 			/// \param cause the cause associated to this Exception.
 			Exception(String const & message, Throwable const & cause) : Throwable(message, cause) { }
 			
-			/// Virtual destructor.
-			inline virtual ~Exception() {
-				finalize();
-			}
-
-			/// Assignment operator.
-			///
-			/// Copies the contents of the other Exception into
-			/// this one.
-			/// \param other the Exception to copy from.
-			Exception & operator=(Exception const & other);
-
 			/// Returns the object's class.
 			/// 
 			/// Returns the object's class object.

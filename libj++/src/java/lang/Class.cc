@@ -33,11 +33,6 @@ namespace java {
 			}
 		}
 
-		Class::Class(const Class& other) 
-			: name_(other.name_)
-			, super_(other.super_) {
-		}
-
 		std::list<String> Class::getInterfaces() const {			
 			std::list<String> interfaces(interfaces_);
 			if(super_ != nullptr) {

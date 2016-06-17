@@ -45,32 +45,13 @@ namespace java {
 			/// \param the name of the Thread
 			Thread(Runnable * runnable, String const & name);
 
-			/// Copy constructor.
-			///
-			/// Creates a Thread object, initialising its internal status
-			/// with that of the provided object.
-			/// \param other the object to copy the internal status from.
-			Thread(Thread const & other) = delete;
-
-			/// Virtual destructor.
-			virtual ~Thread() {
-				finalize();
-			}
-
-			/// Assignment operator.
-			///
-			/// Thread assignment is unsupported; this will throw a
-			/// CloneNotSupportedException unless it is a self-assignment.
-			/// \return the Thread itself is a self assignment was performed.
-			Thread & operator=(Thread const & other) = delete;
-
 			/// Returns the identifier of this Thread. 
 			///
 			/// The thread ID is a positive long number generated when this thread 
 			/// was created. The thread ID is unique and remains unchanged during 
 			/// its lifetime. When a thread is terminated, this thread ID may be reused.
 			/// \return the Thread id.
-			long long getId() const;
+			jlong getId() const;
 			
 
 			/// Sets the name of the Thread.
@@ -117,9 +98,6 @@ namespace java {
 			inline virtual Class const & getClass() const {
 				return Thread::klass; 
 			}
-
-			/// Performs a clanup on the object.
-			inline virtual void finalize() { }
 
 			/// Puts the calling Thread to sleep.
 			///

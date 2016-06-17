@@ -12,17 +12,8 @@ namespace java {
 
 		const Class Integer::klass("java.lang.Integer", Number::klass);
 
-
 		jbyte Integer::byteValue() const {
 			return (jbyte)value_;
-		}
-
-		double Integer::doubleValue() const {
-			return (double)value_;
-		}
-
-		float Integer::floatValue() const {
-			return (float)value_;
 		}
 
 		jshort Integer::shortValue() const {
@@ -35,6 +26,14 @@ namespace java {
 
 		jlong Integer::longValue() const {
 			return (jlong)value_;
+		}
+		
+		float Integer::floatValue() const {
+			return (float)value_;
+		}
+
+		double Integer::doubleValue() const {
+			return (double)value_;
 		}
 
 		String Integer::toString() const {			

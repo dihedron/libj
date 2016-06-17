@@ -50,21 +50,13 @@ namespace java {
 			/// conversion to type byte.
 			virtual jbyte byteValue() const = 0;
 
-			/// Returns the value of the specified number as a double.
+			/// Returns the value of the specified number as a short.
 			///
-			/// Returns the value of the specified number as a double. This may 
-			/// involve rounding.
+			/// Returns the value of the specified number as a short. This may 
+			/// involve rounding or truncation.
 			/// \return the numeric value represented by this object after 
-			/// conversion to type double.
-			virtual double doubleValue() const = 0;
-
-			/// Returns the value of the specified number as a float.
-			///
-			/// Returns the value of the specified number as a float. This may 
-			/// involve rounding.
-			/// \return the numeric value represented by this object after 
-			/// conversion to type float.
-			virtual float floatValue() const = 0;
+			/// conversion to type short.
+			virtual jshort shortValue() const = 0;
 
 			/// Returns the value of the specified number as an int.
 			///
@@ -82,17 +74,22 @@ namespace java {
 			/// conversion to type long.
 			virtual jlong longValue() const = 0;
 
-			/// Returns the value of the specified number as a short.
+			/// Returns the value of the specified number as a float.
 			///
-			/// Returns the value of the specified number as a short. This may 
-			/// involve rounding or truncation.
+			/// Returns the value of the specified number as a float. This may 
+			/// involve rounding.
 			/// \return the numeric value represented by this object after 
-			/// conversion to type short.
-			virtual jshort shortValue() const = 0;
+			/// conversion to type float.
+			virtual float floatValue() const = 0;
 
-			/// Performs a clanup on the object.
-			inline virtual void finalize() { }
-			
+			/// Returns the value of the specified number as a double.
+			///
+			/// Returns the value of the specified number as a double. This may 
+			/// involve rounding.
+			/// \return the numeric value represented by this object after 
+			/// conversion to type double.
+			virtual double doubleValue() const = 0;
+
 			/// Converts the given Number to an hexadecimal String.
 			///
 			/// Converts the current Number to an hexadecimal String.

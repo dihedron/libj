@@ -9,14 +9,6 @@
 
 namespace java {
 	namespace lang {
-
 		const Class RuntimeException::klass("java.lang.RuntimeException", Exception::klass);
-
-		RuntimeException & RuntimeException::operator=(RuntimeException const & other) {
-			if(this != &other) {
-				Exception::operator=((Exception const &)other);
-			}
-			return *this;
-		}
 	}
 }

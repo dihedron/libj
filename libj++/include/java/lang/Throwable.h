@@ -21,13 +21,6 @@ namespace java {
 			/// Default constructor.
 			Throwable();
 
-			/// Copy constructor.
-			///
-			/// Creates a Throwable object, initialising its internal status
-			/// with that of the provided object.
-			/// \param other the object to copy the internal status from.
-			Throwable(Throwable const & other);
-
 			/// Constructor.
 			/// 
 			/// Initialises the Throwable with a message and no
@@ -43,18 +36,6 @@ namespace java {
 			/// \param cause the cause associated to this Throwable.
 			Throwable(String const & message, Throwable const & cause);
 			
-			/// Virtual destructor.
-			inline virtual ~Throwable() {
-				finalize();
-			}
-
-			/// Assignment operator.
-			///
-			/// Copies the contents of the other Throwable into
-			/// this one.
-			/// \param other the Throwable to copy from.
-			Throwable & operator=(Throwable const & other);
-
 			/// Returns this Throwable's message.
 			///
 			/// Returns this Throwable's message, or an mepty String.

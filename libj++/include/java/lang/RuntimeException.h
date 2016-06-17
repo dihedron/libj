@@ -19,13 +19,6 @@ namespace java {
 			/// Default constructor.
 			RuntimeException() { }
 
-			/// Copy constructor.
-			///
-			/// Creates a RuntimeException object, initialising its 
-			/// internal status with that of the provided object.
-			/// \param other the object to copy the internal status from.
-			RuntimeException(RuntimeException const & other) : Exception(other) { }
-
 			/// Constructor.
 			/// 
 			/// Initialises the RuntimeException with a message and no
@@ -40,18 +33,6 @@ namespace java {
 			/// \param message the message associated to this RuntimeException.
 			/// \param cause the cause associated to this RuntimeException.
 			RuntimeException(String const & message, Throwable const & cause) : Exception(message, cause) { }
-			
-			/// Virtual destructor.
-			inline virtual ~RuntimeException() {
-				finalize();
-			}
-
-			/// Assignment operator.
-			///
-			/// Copies the contents of the other RuntimeException into
-			/// this one.
-			/// \param other the RuntimeException to copy from.
-			RuntimeException & operator=(RuntimeException const & other);
 
 			/// Returns the object's class.
 			/// 

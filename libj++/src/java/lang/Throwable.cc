@@ -18,14 +18,6 @@ namespace java {
 
 		}
 
-		Throwable::Throwable(Throwable const & other)
-			: message_(other.message_)
-			, cause_(nullptr) {
-			if(other.cause_ != nullptr) {
-				this->cause_= new Throwable(*other.cause_);
-			}
-		}
-
 		Throwable::Throwable(String const & message) 
 			: message_(message)
 			, cause_(nullptr) {
@@ -35,18 +27,6 @@ namespace java {
 		Throwable::Throwable(String const & message, Throwable const & cause)
 			: message_(message)
 			, cause_(new Throwable(cause)) {			
-		}
-
-		Throwable & Throwable::operator=(Throwable const & other) {
-			std::cerr << "in Throwable::=" << std::endl;
-			if(this != &other) {
-				finalize();
-				message_ = other.message_;
-				if(other.cause_ != nullptr) {
-					cause_ = new Throwable(*other.cause_);
-				}
-			}
-			return *this;
 		}
 
 		String Throwable::toString() const {

@@ -46,17 +46,6 @@ namespace java {
 			/// \param super a reference to the superclass
 			/// \param a variable list of Strings representing the implemented interfaces
 			Class(String const & name, Class const & super, std::initializer_list<char const *> interfaces);
-	
-			/// Copy constructor.
-			///
-			/// Copies the object's internal status from the other object.
-			/// \param other the object to copy from
-			Class(const Class & other);
-	
-			/// Destructor.
-			inline virtual ~Class() { 
-				finalize();
-			}
 
 			/// Returns the Class object representing this class.
 			///
@@ -113,6 +102,7 @@ namespace java {
 			/// \return a String representation of this class.
 			virtual String toString() const;
 
+		protected:
 			/// Cleans up any memory associated with a Class object.
 			inline virtual void finalize() { }
 				

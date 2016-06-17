@@ -19,13 +19,6 @@ namespace java {
 			/// Default constructor.
 			CloneNotSupportedException() { }
 
-			/// Copy constructor.
-			///
-			/// Creates a CloneNotSupportedException object, initialising its 
-			/// internal status with that of the provided object.
-			/// \param other the object to copy the internal status from.
-			CloneNotSupportedException(CloneNotSupportedException const & other) : Exception(other) { }
-
 			/// Constructor.
 			/// 
 			/// Initialises the CloneNotSupportedException with a message and no
@@ -41,18 +34,6 @@ namespace java {
 			/// \param cause the cause associated to this CloneNotSupportedException.
 			CloneNotSupportedException(String const & message, Throwable const & cause) : Exception(message, cause) { }
 			
-			/// Virtual destructor.
-			inline virtual ~CloneNotSupportedException() {
-				finalize();
-			}
-
-			/// Assignment operator.
-			///
-			/// Copies the contents of the other CloneNotSupportedException into
-			/// this one.
-			/// \param other the CloneNotSupportedException to copy from.
-			CloneNotSupportedException & operator=(CloneNotSupportedException const & other);
-
 			/// Returns the object's class.
 			/// 
 			/// Returns the object's class object.

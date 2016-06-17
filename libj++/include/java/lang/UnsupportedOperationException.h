@@ -19,13 +19,6 @@ namespace java {
 			/// Default constructor.
 			UnsupportedOperationException() { }
 
-			/// Copy constructor.
-			///
-			/// Creates a UnsupportedOperationException object, initialising its 
-			/// internal status with that of the provided object.
-			/// \param other the object to copy the internal status from.
-			UnsupportedOperationException(UnsupportedOperationException const & other) : RuntimeException(other) { }
-
 			/// Constructor.
 			/// 
 			/// Initialises the UnsupportedOperationException with a message and no
@@ -41,18 +34,6 @@ namespace java {
 			/// \param cause the cause associated to this UnsupportedOperationException.
 			UnsupportedOperationException(String const & message, Throwable const & cause) : RuntimeException(message, cause) { }
 			
-			/// Virtual destructor.
-			inline virtual ~UnsupportedOperationException() {
-				finalize();
-			}
-
-			/// Assignment operator.
-			///
-			/// Copies the contents of the other UnsupportedOperationException into
-			/// this one.
-			/// \param other the UnsupportedOperationException to copy from.
-			UnsupportedOperationException & operator=(UnsupportedOperationException const & other);
-
 			/// Returns the object's class.
 			/// 
 			/// Returns the object's class object.

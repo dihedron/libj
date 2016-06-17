@@ -17,14 +17,6 @@ namespace java {
 			return (jbyte)value_;
 		}
 
-		double Long::doubleValue() const {
-			return (double)value_;
-		}
-
-		float Long::floatValue() const {
-			return (float)value_;
-		}
-
 		jshort Long::shortValue() const {
 			return (jshort)value_;
 		}
@@ -35,6 +27,14 @@ namespace java {
 
 		jlong Long::longValue() const {
 			return (jlong)value_;
+		}
+
+		float Long::floatValue() const {
+			return (float)value_;
+		}
+
+		double Long::doubleValue() const {
+			return (double)value_;
 		}
 
 		String Long::toString() const {			

@@ -9,14 +9,6 @@
 
 namespace java {
 	namespace lang {
-
 		const Class CloneNotSupportedException::klass("java.lang.CloneNotSupportedException", Exception::klass);
-
-		CloneNotSupportedException & CloneNotSupportedException::operator=(CloneNotSupportedException const & other) {
-			if(this != &other) {
-				Exception::operator=((Exception const &)other);
-			}
-			return *this;
-		}
 	}
 }

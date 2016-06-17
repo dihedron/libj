@@ -27,5 +27,11 @@ typedef int				jint;
 /// The long integer type (usually 64 bits).
 typedef long long		jlong;
 
+/// The real (floating point) number type.
+typedef float			jfloat;
+
+/// The double precision real (floating point) number type.
+typedef double			jdouble;
+
 #endif // JAVA_LANG_VALUETYPES
 

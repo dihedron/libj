@@ -45,23 +45,6 @@ namespace java {
 			/// \param value the value to use for initialisation.
 			Integer(jint value) : value_(value) { }
 
-			/// Copy constructor.
-			///
-			/// Creates a new Integer, copying its value from the provided one.
-			/// \param other the Integer to copy the internal status from.
-			Integer(const Integer & other) : value_(other.value_) { }
-
-			/// Assignment operator.
-			/// 
-			/// Copies the status of the given object into this number.
-			/// \param other the object to copy the internal status from.
-			Integer & operator=(Integer const & other);
-
-			/// Destructor.
-			virtual ~Integer() { 
-				finalize();
-			}
-
 			/// Returns this Integer's class object.
 			///
 			/// Returns this Integer's class object; the returned object
@@ -78,22 +61,6 @@ namespace java {
 			/// \return the numeric value represented by this object after 
 			/// conversion to type byte.
 			virtual jbyte byteValue() const;
-
-			/// Returns the value of the specified number as a double.
-			///
-			/// Returns the value of the specified number as a double. This may 
-			/// involve rounding.
-			/// \return the numeric value represented by this object after 
-			/// conversion to type double.
-			virtual double doubleValue() const;
-
-			/// Returns the value of the specified number as a float.
-			///
-			/// Returns the value of the specified number as a float. This may 
-			/// involve rounding.
-			/// \return the numeric value represented by this object after 
-			/// conversion to type float.
-			virtual float floatValue() const;
 
 			/// Returns the value of the specified number as a short.
 			///
@@ -119,7 +86,26 @@ namespace java {
 			/// conversion to type long.
 			virtual jlong longValue() const;
 
-			/// Returns the 
+			/// Returns the value of the specified number as a float.
+			///
+			/// Returns the value of the specified number as a float. This may 
+			/// involve rounding.
+			/// \return the numeric value represented by this object after 
+			/// conversion to type float.
+			virtual float floatValue() const;
+
+			/// Returns the value of the specified number as a double.
+			///
+			/// Returns the value of the specified number as a double. This may 
+			/// involve rounding.
+			/// \return the numeric value represented by this object after 
+			/// conversion to type double.
+			virtual double doubleValue() const;
+
+			/// Returns the Integer as a String.
+			/// 
+			/// Returns the string representation of the Integer.
+			/// \return the Integer as a String.			 
 			virtual String toString() const;
 
 			operator int() const { return (int)value_; };
@@ -132,7 +118,6 @@ namespace java {
 
 			friend std::ostream & operator<<(std::ostream & os, Integer const & integer);
 
-			inline virtual void finalize() { }
 		private:
 			jint value_;
 		};

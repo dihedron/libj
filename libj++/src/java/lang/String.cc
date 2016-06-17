@@ -13,14 +13,6 @@ namespace java {
 
 		Class String::klass("java.lang.String");
 
-		String & String::operator=(String const & other) {
-			std::cout << "copying string" << std::endl;
-			if(this != &other) {
-				this->value_= other.value_;
-			}
-			return *this;
-		}
-
 		Class & String::getClass() const { 
 			 return String::klass; 
 		}
