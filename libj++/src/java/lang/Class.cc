@@ -46,6 +46,10 @@ namespace java {
 			// we would end up in an infinite loop between toString() and getClass()
 			return String("java.lang.Class@") + Number::toHexString(hashCode());
 		}
+
+		jboolean Class::operator==(Class const & other) const {
+			return name_ == other.name_;
+		}
 	}
 }
 

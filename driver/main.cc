@@ -49,6 +49,16 @@ static void testClasses() {
 	CloneNotSupportedException ex("hallo!");
 	std::cout << "class name: \"" << ex.getClass().getName() << "\", simple name: \"" << ex.getClass().getSimpleName() << "\"" << std::endl;
 
+	{
+		CloneNotSupportedException e1, e2;
+		Throwable t;
+		std::cout << "equal classes are equal? " << (e1.getClass() == e2.getClass()) << " (expected true)" << std::endl;
+		std::cout << "different classes are equal? " << (e1.getClass() == t.getClass()) << " (expected false)" << std::endl;
+		std::cout << "CloneNotSupportedException instanceof Throwable? " << (e1.instanceOf(Throwable::klass)) << " (expected true)" << std::endl;
+		std::cout << "CloneNotSupportedException instanceof Exception? " << (e1.instanceOf(Exception::klass)) << " (expected true)" << std::endl;
+		std::cout << "CloneNotSupportedException instanceof Object? " << (e1.instanceOf(Object::klass)) << " (expected true)" << std::endl;
+		std::cout << "CloneNotSupportedException instanceof Thread? " << (e1.instanceOf(Thread::klass)) << " (expected false)" << std::endl;
+	}
 	std::cout << "---------------- TEST CLASSES ----------------" << std::endl;
 }
 

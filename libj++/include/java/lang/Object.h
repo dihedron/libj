@@ -66,6 +66,19 @@ namespace java {
 				return Object::klass; 
 			}
 
+			/// Checks if the current object can be cast to the givenm type.
+			///
+			/// Checks if the current object is an instance of, or can be
+			/// cast to the given type: if the given type is a clas, it must
+			/// be a superclass of the curre Object's one for this to be true;
+			/// if it is an interface, it must be directly implemented by this
+			/// Object's class or by any of its superclasses.
+			/// \param otherClass the Class or interface to check against.
+			/// \return whether this Object can be cast to the given type.
+			jboolean instanceOf(Class const & otherClass) const;
+
+			jboolean instanceOf(String const & otherInterface) const;
+
 			/// Returns a string preresentation of the object.
 			///
 			/// This method provides a string representation of the 

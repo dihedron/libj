@@ -102,9 +102,7 @@ namespace java {
 			/// \return a String representation of this class.
 			virtual String toString() const;
 
-		protected:
-			/// Cleans up any memory associated with a Class object.
-			inline virtual void finalize() { }
+			jboolean operator==(Class const & other) const;
 				
 		private:
 			/// The fully qualified name of the class.

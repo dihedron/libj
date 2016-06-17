@@ -117,14 +117,18 @@ namespace java {
 			String operator+(long value) const;	
 			String operator+(long long value) const;
 
+			inline virtual jboolean operator==(String const & other) const {
+				return value_ == other.value_;
+			}
+
 			/// Compares two strings.
 			///
 			/// Lexicographically compares two strings, returning whether
 			/// this one precedes the other one.
 			/// \param other the String to compare against
 			/// \return whether this String comes before the other
-			inline virtual bool operator<(String const & other) {
-				return *this < other;
+			inline virtual bool operator<(String const & other) const {
+				return value_ < other.value_;
 			}
 
 			/// Compares two strings.
@@ -133,8 +137,8 @@ namespace java {
 			/// this one comes after the other one.
 			/// \param other the String to compare against
 			/// \return whether this String comes after the other
-			inline virtual bool operator>(String const & other) {
-				return *this > other;
+			inline virtual bool operator>(String const & other) const {
+				return value_ > other.value_;
 			}			 
 
 			friend std::ostream & operator<<(std::ostream & os, String const & string);
