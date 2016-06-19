@@ -15,31 +15,25 @@ namespace java {
 	namespace lang {
 				
 		jboolean Object::instanceOf(Class const & otherClass) const {
-			jboolean result = false;
-			Class const & thisClass = getClass(); 
-			if(thisClass == otherClass) {
-				return true;
-			} else {
-				// check superclasses
-				Class const * super = &thisClass;
-				while((super = super->getSuperclass()) != nullptr) {  
-					if(super->getName() == otherClass.getName()) {
-						return true;
-					}
-				}
-				// how do we check for interfaces, since interfaces 
-				// have no associated class object in our scheme?
-			} 
-			return result;
-		}
-
-		jboolean Object::instanceOf(Interface const & otherInterface) const {
-			for(auto s: getClass().getInterfaces()) {
-				if(*s == otherInterface) {
+			
+			Class const * thisClass = &(getClass());
+			do {
+				if(*thisClass == otherClass) {
+					std::cout << "compared class " << thisClass->getName() << " against " << otherClass.getName() << ": equal" << std::endl;
 					return true;
+				} else {
+					std::cout << "compared class " << thisClass->getName() << " against " << otherClass.getName() << ": different" << std::endl;
 				}
-			}
-			return false;
+				for(auto i : thisClass->getInterfaces()) {
+					if(otherClass == *i) {
+						std::cout << "compared interface " << i->getName() << " against " << otherClass.getName() << ": equal" << std::endl;
+						return true;
+					} else {
+						std::cout << "compared interface " << i->getName() << " against " << otherClass.getName() << ": different" << std::endl;
+					}
+ 				}			
+			} while((thisClass = thisClass->getSuperclass()) != nullptr);
+			return false;  
 		}
 
 		String Object::toString() const {			

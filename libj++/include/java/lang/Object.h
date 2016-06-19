@@ -73,7 +73,7 @@ namespace java {
 			/// \return whether this Object can be cast to the given type.
 			jboolean instanceOf(Class const & otherClass) const;
 
-			jboolean instanceOf(Interface const & otherInterface) const;
+			//jboolean instanceOf(Interface const & otherInterface) const;
 
 			/// Returns a string preresentation of the object.
 			///

@@ -42,14 +42,6 @@ namespace java {
 				return System::klass; 
 			}
 
-			/// Returns a string preresentation of the object.
-			///
-			/// This method provides a string representation of the 
-			/// object; it can be used to customise the way the object
-			/// is printed out to a text stream.
-			/// \return the object's string representation.
-			virtual String toString() const;
-
 		private:
 			
 			/// Default constructor.
