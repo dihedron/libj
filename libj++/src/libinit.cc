@@ -30,3 +30,31 @@ const Class CloneNotSupportedException::klass("java.lang.CloneNotSupportedExcept
 const Class UnsupportedOperationException::klass("java.lang.UnsupportedOperationException", &RuntimeException::klass);
 const Interface Runnable::klass("java.lang.Runnable");
 const Class Thread::klass("java.lang.Thread", &Object::klass, { &Runnable::klass });
+
+//void * operator new(std::size_t n) throw(std::bad_alloc) {
+  // allocates memory 
+//}
+
+//void operator delete(void * p) throw() {
+  // deletes memory
+//}
+
+/*
+constexpr int ARRAY_METADATA_SIZE = 4; 
+
+/// This oveerides the standandar C++ allocator to provide a
+/// mechanism that is analogous to that provided by talloc:
+/// store the size of the array somewhere before the starting
+/// address of the data block, and use it to check if there is
+/// an out-of-bounds access attempt.
+void *operator new[](std::size_t s) throw(std::bad_alloc) {
+	// this is equivalent
+	void * data = calloc(s + ARRAY_METADATA_SIZE);
+    return NULL;
+}
+
+void operator delete[](void *p) throw()
+{
+    // TODO: implement
+}
+*/

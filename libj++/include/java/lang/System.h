@@ -31,8 +31,27 @@ namespace java {
 			/// class; all object share the same instance.
 			static const Class klass;
 
-
+			/// Returns the current timestamp in millliseconds.
+			///
+			/// Returns the current timestamp as the number of milliseconds 
+			/// since the Epoch.
+			/// \return the current timestamp in milliseconds.
 			static jlong currentTimeMillis();
+
+			/// Terminates the currently running pseudo-VM.
+			///
+			/// Terminates the currently running pseudo-VM, returning 
+			/// the given exit code.
+			/// \param status the process' exit code to return.
+			static void	exit(jint status);
+
+			/// Runs the garbage collector.
+			///
+			/// This method does noting in release builds; in debug builds
+			/// it may dump all the outstanding memory blocks allocated via
+			/// operators new and new[], and may therefore help finding any
+			/// memory leaks.
+			static void gc();
 
 			/// Returns the object's class.
 			/// 
@@ -41,6 +60,7 @@ namespace java {
 			inline virtual Class const & getClass() const {
 				return System::klass; 
 			}
+
 
 		private:
 			

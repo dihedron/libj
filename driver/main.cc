@@ -55,6 +55,7 @@ static void testClasses() {
 		Throwable t;
 		std::cout << "equal classes are equal? " << (e1.getClass() == e2.getClass()) << " (expected true)" << std::endl;
 		std::cout << "different classes are equal? " << (e1.getClass() == t.getClass()) << " (expected false)" << std::endl;
+
 		std::cout << "UnsupportedOperationException instanceof Throwable? " << (e1.instanceOf(Throwable::klass)) << " (expected true)" << std::endl;
 		std::cout << "UnsupportedOperationException instanceof Exception? " << (e1.instanceOf(Exception::klass)) << " (expected true)" << std::endl;
 		std::cout << "UnsupportedOperationException instanceof Object? " << (e1.instanceOf(Object::klass)) << " (expected true)" << std::endl;
@@ -154,6 +155,6 @@ int main(int argc, char** argv) {
 
     std::cout << "current time millis: " << System::currentTimeMillis() << std::endl;
     
-    return 0;
+    System::exit(0);
 }
 

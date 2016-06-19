@@ -7,11 +7,22 @@
  #include <java/lang/System.h>
  #include <java/lang/Class.h>
  #include <chrono>
+ #include <stdlib.h>
 
- namespace java {
- 	namespace lang {
- 		jlong System::currentTimeMillis() {
+namespace java {
+	namespace lang {
+		jlong System::currentTimeMillis() {
  			return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
- 		}
+		}
+
+		void System::exit(jint status) {
+			::exit(status);
+		}		
+
+		void System::gc() {
+#ifdef NDEBUG
+#else
+#endif						
+		}
  	}
- }
+}
