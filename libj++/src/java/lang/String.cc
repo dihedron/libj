@@ -15,11 +15,19 @@ namespace java {
 			return String(this->value_ + string.value_);
 		}
 		
-		String String::operator+(long value) const {
+		String String::operator+(jbyte value) const {
 			return valueOf(value);
 		}
 
-		String String::operator+(long long value) const {
+		String String::operator+(jshort value) const {
+			return valueOf(value);
+		}
+
+		String String::operator+(jint value) const {
+			return valueOf(value);
+		}
+
+		String String::operator+(jlong value) const {
 			return valueOf(value);
 		}
 		

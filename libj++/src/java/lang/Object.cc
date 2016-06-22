@@ -19,7 +19,7 @@ namespace java {
 			Class const * thisClass = &(getClass());
 			do {
 				if(*thisClass == otherClass) {
-					std::cout << "compared class " << thisClass->getName() << " against " << otherClass.getName() << ": equal" << std::endl;
+					//std::cout << "compared class " << thisClass->getName() << " against " << otherClass.getName() << ": equal" << std::endl;
 					return true;
 				} else {
 					std::cout << "compared class " << thisClass->getName() << " against " << otherClass.getName() << ": different" << std::endl;

@@ -7,8 +7,7 @@
 #ifndef JAVA_LANG_OBJECT
 #define JAVA_LANG_OBJECT
 
-#include <java/lang/ValueTypes.h>
-#include <macros.h>
+#include <VM.h>
 #include <iostream>
 
 namespace java {

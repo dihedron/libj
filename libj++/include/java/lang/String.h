@@ -111,15 +111,53 @@ namespace java {
 
 			/// Returns the String itself.
 			///
-			/// Overrides the generit tostring() method returning the String itself.
-			/// \return the string itself.
+			/// Overrides the generic toString() method returning a copy
+			/// of the String itself (for compliance with the original  
+			/// method signature).
+			/// \return a copy of the String itself.
 			inline virtual String toString() const {
 				return *this;
 			}
 
+			/// Concatenates two strings.
+			///
+			/// Concatenates this string with the other, returning a new
+			/// String as a result.
+			/// \param string the String to append to this one.
+			/// \return a new String containing the two Strings.
 			String operator+(String const & string) const;
-			String operator+(long value) const;	
-			String operator+(long long value) const;
+
+			/// Concatenates an 8-bit integer to this String.
+			///
+			/// Concatenates this string with the given 8 bits integer, 
+			/// returning a new String as a result.
+			/// \param value the 8 bits value to append to this one.
+			/// \return a new String containing the concatenation.				
+			String operator+(jbyte value) const;
+
+			/// Concatenates a 16-bit integer to this String.
+			///
+			/// Concatenates this string with the given 16 bits integer, 
+			/// returning a new String as a result.
+			/// \param value the 16 bits value to append to this one.
+			/// \return a new String containing the concatenation.				
+			String operator+(jshort value) const;
+
+			/// Concatenates a 32-bit integer to this String.
+			///
+			/// Concatenates this string with the given 32 bits integer, 
+			/// returning a new String as a result.
+			/// \param value the 32 bits value to append to this one.
+			/// \return a new String containing the concatenation.				
+			String operator+(jint value) const;
+			
+			/// Concatenates a 64-bit long to this String.
+			///
+			/// Concatenates this string with the given 64 bits long, 
+			/// returning a new String as a result.
+			/// \param value the 64 bits value to append to this one.
+			/// \return a new String containing the concatenation.				
+			String operator+(jlong value) const;
 
 			inline virtual jboolean operator==(String const & other) const {
 				return value_ == other.value_;

@@ -61,6 +61,17 @@ static void testClasses() {
 		std::cout << "UnsupportedOperationException instanceof Object? " << (e1.instanceOf(Object::klass)) << " (expected true)" << std::endl;
 		std::cout << "UnsupportedOperationException instanceof Thread? " << (e1.instanceOf(Thread::klass)) << " (expected false)" << std::endl;
 	}
+
+	std::cout << "----------------------------------------------" << std::endl;
+
+	{
+		UnsupportedOperationException e1;
+		std::cout << "UnsupportedOperationException instanceof Throwable? " << e1 instanceof(Throwable) << " (expected true)" << std::endl;
+		/*std::cout << "UnsupportedOperationException instanceof Exception? " << (e1.instanceOf(Exception::klass)) << " (expected true)" << std::endl;
+		std::cout << "UnsupportedOperationException instanceof Object? " << (e1.instanceOf(Object::klass)) << " (expected true)" << std::endl;
+		std::cout << "UnsupportedOperationException instanceof Thread? " << (e1.instanceOf(Thread::klass)) << " (expected false)" << std::endl;
+		*/
+	}
 	std::cout << "---------------- TEST CLASSES ----------------" << std::endl;
 }
 
