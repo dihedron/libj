@@ -30,3 +30,6 @@
 
 # Binary directories
 build
+
+# Generated header file: VM.h
+include/VM.h 
