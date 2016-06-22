@@ -1,5 +1,0 @@
-
-
-// the configured options and settings for libjpp
-#define LIBJPP_VERSION_MAJOR @LIBJPP_VERSION_MAJOR@
-#define LIBJPP_VERSION_MINOR @LIBJPP_VERSION_MINOR@

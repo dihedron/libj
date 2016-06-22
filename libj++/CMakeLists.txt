@@ -10,15 +10,10 @@ set (LIBJPP_VERSION_PATCH 1)
 # Configure the header file used to pass some of the CMake 
 # settings to the source code
 configure_file (
-	"${CMAKE_CURRENT_SOURCE_DIR}/config.h.in"
-	"${CMAKE_CURRENT_BINARY_DIR}/config.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/include/VM.h.in"
+#	"${CMAKE_CURRENT_BINARY_DIR}/VM.h"
+	"${CMAKE_CURRENT_SOURCE_DIR}/include/VM.h"
 )
-
-# Add the binary tree to the search path for include files
-# so that we will find the CMake-generated config.h; this 
-# is only useful if we're going to include it from the
-# runtime source files, so it is commented by default
-#include_directories("${CMAKE_CURRENT_BINARY_DIR}")
 
 # Recursively look up source and header files in the 
 # current directory

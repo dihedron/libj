@@ -8,8 +8,7 @@
 #include <iostream>
 #include <vector>
 
-#include <config.h>
-
+#include <VM.h>
 
 #include <java/lang/Class.h>
 #include <java/lang/String.h>
@@ -153,9 +152,9 @@ static void testThreads() {
  * 
  */
 int main(int argc, char** argv) {
-	
-	std::cout << "hallo from libj++ ver." << LIBJPP_VERSION_MAJOR << "." << LIBJPP_VERSION_MINOR << "." << LIBJPP_VERSION_PATCH << "!" << std::endl;    
 
+	VM::initialise();
+    
     testClasses();
 
     testStrings();
@@ -166,6 +165,8 @@ int main(int argc, char** argv) {
 
     std::cout << "current time millis: " << System::currentTimeMillis() << std::endl;
     
+	VM::finalise();
+
     System::exit(0);
 }
 

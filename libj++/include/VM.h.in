@@ -32,13 +32,13 @@ typedef double			jdouble;
 
 
 // The externally-configured major version of this pseudo-VM.
-#define LIBJPP_VERSION_MAJOR 0
+#define LIBJPP_VERSION_MAJOR @LIBJPP_VERSION_MAJOR@
 
 // The externally-configured minor version of this pseudo-VM.
-#define LIBJPP_VERSION_MINOR 0
+#define LIBJPP_VERSION_MINOR @LIBJPP_VERSION_MINOR@
 
 // The externally-configured patch/revision version of this pseudo-VM.
-#define LIBJPP_VERSION_PATCH 1
+#define LIBJPP_VERSION_PATCH @LIBJPP_VERSION_PATCH@
 
 /// A class providing pseudo-VM initialisation and cleanup logic; 
 /// this will set up and make available a series of services such 

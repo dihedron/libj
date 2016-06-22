@@ -10,7 +10,7 @@ set (CMAKE_CXX_STANDARD 11)
 include_directories (
 	"${PROJECT_SOURCE_DIR}/libj++"
 	"${PROJECT_SOURCE_DIR}/libj++/include"
-	"${PROJECT_BINARY_DIR}/libj++"
+#	"${PROJECT_BINARY_DIR}/libj++"
 )
 
 # The "libj++" subproject implements the actual J++

@@ -19,17 +19,17 @@ namespace java {
 			Class const * thisClass = &(getClass());
 			do {
 				if(*thisClass == otherClass) {
-					//std::cout << "compared class " << thisClass->getName() << " against " << otherClass.getName() << ": equal" << std::endl;
+//					std::cout << "compared class " << thisClass->getName() << " against " << otherClass.getName() << ": equal" << std::endl;
 					return true;
-				} else {
-					std::cout << "compared class " << thisClass->getName() << " against " << otherClass.getName() << ": different" << std::endl;
+//				} else {
+//					std::cout << "compared class " << thisClass->getName() << " against " << otherClass.getName() << ": different" << std::endl;
 				}
 				for(auto i : thisClass->getInterfaces()) {
 					if(otherClass == *i) {
-						std::cout << "compared interface " << i->getName() << " against " << otherClass.getName() << ": equal" << std::endl;
+//						std::cout << "compared interface " << i->getName() << " against " << otherClass.getName() << ": equal" << std::endl;
 						return true;
-					} else {
-						std::cout << "compared interface " << i->getName() << " against " << otherClass.getName() << ": different" << std::endl;
+//					} else {
+//						std::cout << "compared interface " << i->getName() << " against " << otherClass.getName() << ": different" << std::endl;
 					}
  				}			
 			} while((thisClass = thisClass->getSuperclass()) != nullptr);
