@@ -10,7 +10,12 @@
 
 namespace java {
 	namespace lang {
-		
+
+		Class const & Class::klass() {
+			static const Class klass("java.lang.Class", &Object::klass());
+			return klass;
+		}
+
 		Class::Class(String const & name, Class const * super) 
 			: name_(name)
 			, super_(super) {
@@ -24,7 +29,7 @@ namespace java {
 					interfaces_.push_back(ref);
 				}
 			}
-		}
+		}		
 		
 		String Class::toString() const {
 			// the name of the class must be hardcoded in this case, otherwise 

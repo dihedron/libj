@@ -10,13 +10,18 @@
 
 namespace java {
 	namespace lang {
+
+		Class const & Interface::klass() {
+			static const Class klass("java.lang.Interface", &Class::klass());
+			return klass;
+		}
 		
 		Interface::Interface(String const & name) 
-			: Class(name, &Object::klass) {
+			: Class(name, &Object::klass()) {
 		}
 
 		Interface::Interface(String const & name, std::initializer_list<Interface const *> interfaces) 
-			: Class(name, &Object::klass, interfaces) {
+			: Class(name, &Object::klass(), interfaces) {
 		}
 	}
 }

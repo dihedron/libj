@@ -27,9 +27,17 @@ namespace java {
 		class System : public Object {
 		public:
 
-			/// The shared reference to the Class object for this
-			/// class; all object share the same instance.
-			static const Class klass;
+			/// Returns a reference to the shared Class object.
+			///
+			/// Returns the shared reference to the Class object for 
+			/// this class; all object share the same instance, which 
+			/// is a local static constant object: this makes sure that 
+			/// the Class object is initialised as soon as this class
+			/// is reerences, and that there is no problem with concurrent
+			/// access since it can only be instantiated once (see 
+			/// Scott Meyers, Effective C++, Item 4).
+			/// \return a reference to the shared Class object.
+			static Class const & klass();
 
 			/// Returns the current timestamp in millliseconds.
 			///
@@ -58,7 +66,7 @@ namespace java {
 			/// Returns the object's class object.
 			/// \return the object's class object.
 			inline virtual Class const & getClass() const {
-				return System::klass; 
+				return System::klass(); 
 			}
 
 
@@ -72,7 +80,7 @@ namespace java {
 			/// Performs a clone of the System, object.
 			///
 			/// The clone operation is not supported, so this
-			/// method will throw a clonenotSupportedException.
+			/// method will throw a CloneNotSupportedException.
 			virtual Object clone() const { throw new CloneNotSupportedException("Cannot clone an object of type java.lang.System."); }
 		};
 	}

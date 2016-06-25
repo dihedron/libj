@@ -11,6 +11,11 @@
 namespace java {
 	namespace lang {
 
+		Class const & String::klass() {
+			static const Class klass("java.lang.String", &Object::klass());
+			return klass;
+		}		
+
 		String String::operator+(String const & string) const {
 			return String(this->value_ + string.value_);
 		}

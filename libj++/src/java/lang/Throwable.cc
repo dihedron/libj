@@ -6,9 +6,15 @@
 
 #include <java/lang/Throwable.h>
 #include <java/lang/Class.h>
+#include <java/io/Serializable.h>
 
 namespace java {
 	namespace lang {
+
+		Interface const & Throwable::klass() {
+			static const Interface klass("java.lang.Throwable", { &java::io::Serializable::klass() });
+			return klass;
+		}
 
 		Throwable::Throwable() 
 			: message_("")

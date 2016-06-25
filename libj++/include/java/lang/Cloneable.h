@@ -8,7 +8,6 @@
 #define JAVA_LANG_CLONEABLE
 
 #include <java/lang/Object.h>
-#include <java/lang/Interface.h>
 
 namespace java {
 	namespace lang {
@@ -17,9 +16,18 @@ namespace java {
 		interface Cloneable {
 		public:
 
-			/// The shared reference to the Interface object for this
-			/// class; all object share the same instance.
-			static const Interface klass;			};				
+			/// Returns a reference to the shared Interface object.
+			///
+			/// Returns the shared reference to the Interface object for 
+			/// this interface; all object share the same instance, which 
+			/// is a local static constant object: this makes sure that 
+			/// the Interface object is initialised as soon as this interface
+			/// is referenced, and that there is no problem with concurrent
+			/// access since it can only be instantiated once (see 
+			/// Scott Meyers, Effective C++, Item 4).
+			/// \return a reference to the shared Interface object.
+			static Interface const & klass();
+		};				
 	}
 }
 

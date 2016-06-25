@@ -11,6 +11,11 @@
  namespace java {
  	namespace lang {
 
+		Class const & Thread::klass() {
+			static const Class klass("java.lang.Thread", &Object::klass(), { &Runnable::klass() });
+			return klass;
+		}		 
+
 		Thread::Thread()
 		: runnable_(nullptr)
 		, thread_(nullptr) {	

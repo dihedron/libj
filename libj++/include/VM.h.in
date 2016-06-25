@@ -73,7 +73,7 @@ private:
 #endif
 
 #ifndef instanceof
-#	define instanceof(T)	.instanceOf(T::klass)
+#	define instanceof(T)	.instanceOf(T::klass())
 #endif 
 
 #endif // LIBJPP_VM

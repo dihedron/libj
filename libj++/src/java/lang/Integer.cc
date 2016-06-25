@@ -9,6 +9,11 @@
 namespace java {
 	namespace lang {
 
+		Class const & Integer::klass() {
+			static const Class klass("java.lang.Integer", &Number::klass());
+			return klass;
+		}		
+
 		jbyte Integer::byteValue() const {
 			return (jbyte)value_;
 		}

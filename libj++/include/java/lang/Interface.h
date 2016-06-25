@@ -15,8 +15,17 @@ namespace java {
 		class Interface : public Class {
 		public:
 
-			/// The Interface' object Class.
-			static const Class klass;
+			/// Returns a reference to the shared Class object.
+			///
+			/// Returns the shared reference to the Class object for 
+			/// this class; all object share the same instance, which 
+			/// is a local static constant object: this makes sure that 
+			/// the Class object is initialised as soon as this class
+			/// is reerences, and that there is no problem with concurrent
+			/// access since it can only be instantiated once (see 
+			/// Scott Meyers, Effective C++, Item 4).
+			/// \return a reference to the shared Class object.
+			static Class const & klass();
 
 			/// Constructor.
 			///
@@ -48,7 +57,7 @@ namespace java {
 			/// Returns the Class object representing this class.
 			/// \return the Class object representing the class.
 			inline virtual Class const & getClass() const {
-				return Interface::klass;
+				return Interface::klass();
 			}		
 		};				
 	}

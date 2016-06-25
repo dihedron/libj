@@ -19,8 +19,18 @@ namespace java {
 		template<typename T>
 		interface Iterator {
 		public:
-			/// The Iterable Interface object.
-			static const java::lang::Interface klass;	
+
+			/// Returns a reference to the shared Interface object.
+			///
+			/// Returns the shared reference to the Interface object for 
+			/// this interface; all object share the same instance, which 
+			/// is a local static constant object: this makes sure that 
+			/// the Interface object is initialised as soon as this interface
+			/// is referenced, and that there is no problem with concurrent
+			/// access since it can only be instantiated once (see 
+			/// Scott Meyers, Effective C++, Item 4).
+			/// \return a reference to the shared Interface object.
+			static java::lang::Interface const & klass();				
 
 			/// Returns true if the iteration has more elements.
 			///

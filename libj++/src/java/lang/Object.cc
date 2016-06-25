@@ -13,7 +13,12 @@
 
 namespace java {
 	namespace lang {
-				
+
+		Class const & Object::klass() {
+			static const Class klass("java.lang.Object");
+			return klass;
+		}
+
 		jboolean Object::instanceOf(Class const & otherClass) const {
 			
 			Class const * thisClass = &(getClass());

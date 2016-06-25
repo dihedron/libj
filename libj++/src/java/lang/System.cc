@@ -11,6 +11,12 @@
 
 namespace java {
 	namespace lang {
+
+		Class const & System::klass() {
+			static const Class klass("java.lang.System", &Object::klass());
+			return klass;
+		}
+		
 		jlong System::currentTimeMillis() {
  			return std::chrono::duration_cast<std::chrono::milliseconds>(std::chrono::high_resolution_clock::now().time_since_epoch()).count();
 		}

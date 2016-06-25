@@ -17,8 +17,17 @@ namespace java {
 		class Integer : public Number {
 		public:
 
-			/// The Integers' Class object.
-			static const Class klass;				  
+			/// Returns a reference to the shared Class object.
+			///
+			/// Returns the shared reference to the Class object for 
+			/// this class; all object share the same instance, which 
+			/// is a local static constant object: this makes sure that 
+			/// the Class object is initialised as soon as this class
+			/// is reerences, and that there is no problem with concurrent
+			/// access since it can only be instantiated once (see 
+			/// Scott Meyers, Effective C++, Item 4).
+			/// \return a reference to the shared Class object.
+			static Class const & klass();			  
 
 			/// Default constructor.
 			///
@@ -49,7 +58,7 @@ namespace java {
 			/// is shared among all instances.
 			/// \return the Class object.
 			inline virtual Class const & getClass() const {
-				return Integer::klass; 
+				return Integer::klass(); 
 			}				  
 
 			/// Returns the value of the specified number as a byte.

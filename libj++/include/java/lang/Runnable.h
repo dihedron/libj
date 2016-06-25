@@ -14,8 +14,18 @@ namespace java {
 		/// A pure virtual class implementing the Runnable interface.
 		interface Runnable {
 		public:
-			/// The Runnable Interface object.
-			static const Interface klass;			
+
+			/// Returns a reference to the shared Interface object.
+			///
+			/// Returns the shared reference to the Interface object for 
+			/// this interface; all object share the same instance, which 
+			/// is a local static constant object: this makes sure that 
+			/// the Interface object is initialised as soon as this interface
+			/// is referenced, and that there is no problem with concurrent
+			/// access since it can only be instantiated once (see 
+			/// Scott Meyers, Effective C++, Item 4).
+			/// \return a reference to the shared Interface object.
+			static Interface const & klass();		
 
 			/// The method implementing the logic to be run in a separate thread.
 			///
