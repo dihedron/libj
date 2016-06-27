@@ -1,5 +1,5 @@
 /*
- * Iterator.h
+ * Map.h
  * Copyright (C) 2016 Andrea Funto' <dihedron.dev@gmail.com>
  * See LICENSE for details and terms of use.
  */
@@ -11,11 +11,7 @@
 
 namespace java {
 	namespace util {
-		/// A pure virtual class implementing the Iterator interface.
-		///
-		/// Iterators replace Enumerations and have an expanded set of 
-		/// features: they allow removal of elements from the underlying 
-		/// collection, and have imprved method names.
+		/// A pure virtual class implementing the Map interface.
 		template<typename K, typename V>
 		interface Map {
 		public:
