@@ -11,7 +11,7 @@
 
 namespace java {
 	namespace lang {
-		class UnsupportedOperationException : public RuntimeException {
+		class UnsupportedOperationException : extends RuntimeException {
 		public:
 			/// Returns a reference to the shared Class object.
 			///

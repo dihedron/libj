@@ -62,6 +62,14 @@ private:
 	VM();	
 }; 
 
+/// A class to work with pseudo-reflection of templates, which need
+/// a concrete type to be instantiated. Void plays the trick.
+class Void {
+public:
+	Void() { }
+	~Void() { }
+};
+
 //
 // LANGUAGE EXTENSIONS 
 //
@@ -71,6 +79,15 @@ private:
 #ifndef interface
 #	define 	interface 		class
 #endif
+
+#ifndef extends
+#	define 	extends 		public
+#endif
+
+#ifndef implements
+#	define 	implements 		public
+#endif
+
 
 #ifndef instanceof
 #	define instanceof(T)	.instanceOf(T::klass())

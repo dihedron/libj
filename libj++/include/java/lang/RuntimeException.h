@@ -11,7 +11,7 @@
 
 namespace java {
 	namespace lang {
-		class RuntimeException : public Exception {
+		class RuntimeException : extends Exception {
 		public:
 			/// Returns a reference to the shared Class object.
 			///

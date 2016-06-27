@@ -15,7 +15,7 @@ namespace java {
 		///
 		/// Iterators replace Enumerations and have an expanded set of 
 		/// features: they allow removal of elements from the underlying 
-		/// collection, and have imprved method names.
+		/// collection, and have improved method names.
 		template<typename T>
 		interface Iterator {
 		public:

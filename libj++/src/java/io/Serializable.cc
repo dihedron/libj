@@ -8,8 +8,11 @@
 
 namespace java {
 	namespace io {
-		java::lang::Interface const & Serializable::klass() {
-			static const java::lang::Interface klass("java.lang.Serializable");
+
+		using namespace java::lang;
+
+		Interface const & Serializable::klass() {
+			static const Interface klass("java.lang.Serializable");
 			return klass;
 		}
 	}

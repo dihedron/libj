@@ -14,7 +14,7 @@
 
 namespace java {
 	namespace lang {
-		class Integer : public Number {
+		class Integer : extends Number {
 		public:
 
 			/// Returns a reference to the shared Class object.

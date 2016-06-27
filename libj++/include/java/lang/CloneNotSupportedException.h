@@ -11,7 +11,7 @@
 
 namespace java {
 	namespace lang {
-		class CloneNotSupportedException : public Exception {
+		class CloneNotSupportedException : extends Exception {
 		public:
 			/// Returns a reference to the shared Class object.
 			///

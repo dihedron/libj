@@ -1,21 +1,52 @@
 /*
- * Map.h
+ * HashMap.h
  * Copyright (C) 2016 Andrea Funto' <dihedron.dev@gmail.com>
  * See LICENSE for details and terms of use.
  */
 
-#ifndef JAVA_UTIL_MAP
-#define JAVA_UTIL_MAP
+#ifndef JAVA_UTIL_HASHMAP
+#define JAVA_UTIL_HASHMAP
 
-#include <java/lang/Object.h>
+#include <java/util/AbstractMap.h>
+#include <java/lang/Cloneable.h>
+#include <java/io/Serializable.h>
 
 namespace java {
 	namespace util {
 		/// A pure virtual class implementing the Map interface.
-		template<class K, class V>
-		interface Map {
+		template<typename K, typename V>		
+		class HashMap : extends AbstractMap<K, V>, implements java::io::Serializable, implements java::lang::Cloneable {
 		public:
 
+			/// Returns a reference to the shared Class object.
+			///
+			/// Returns the shared reference to the Class object for 
+			/// this class; all object share the same instance, which 
+			/// is a local static constant object: this makes sure that 
+			/// the Class object is initialised as soon as this class
+			/// is reerences, and that there is no problem with concurrent
+			/// access since it can only be instantiated once (see 
+			/// Scott Meyers, Effective C++, Item 4).
+			/// \return a reference to the shared Class object.
+			static java::lang::Class const & klass(); 
+
+			/// Constructor; only subclasses can instantiate an AbstractMap.
+			HashMap() { }
+
+			/// Destructor.
+			virtual ~HashMap();
+
+			/// Returns the object's class.
+			/// 
+			/// Returns the object's class object.
+			/// \return the object's class object.
+			inline virtual java::lang::Class const & getClass() const {
+				return HashMap::klass(); 
+			}			
+
+		protected:
+			
+/*
 			/// Returns a reference to the shared Interface object.
 			///
 			/// Returns the shared reference to the Interface object for 
@@ -26,17 +57,7 @@ namespace java {
 			/// access since it can only be instantiated once (see 
 			/// Scott Meyers, Effective C++, Item 4).
 			/// \return a reference to the shared Interface object.
-			static java::lang::Interface const & klass();			
-
-			interface Entry {
-			public:
-				Entry(K const & key, V * value);
-
-				virtual ~Entry() { } 
-			};
-
-			/// Destructor.
-			virtual ~Map() { }			
+			static java::lang::Interface const & klass();				
 
 			/// Removes all of the mappings from this map.
 			///
@@ -80,9 +101,8 @@ namespace java {
 			///
 			/// Copies all of the mappings from the specified map to this map;
 			/// this operation is optional.
-			/// \param map the map to merge with this one.
-			// TODO: how do we do this?			
-			//virtual void putAll(Map<> const & map) = 0:
+			/// \param map the map to merge with this one.			
+			virtual void putAll(Map<typename K, typename V> const & map) = 0:
 
 			/// Removes the mapping under the given key, if any.
 			///
@@ -113,10 +133,11 @@ namespace java {
 			// Set<K> keySet()
 
 			// TODO: Returns a Collection view of the values contained in this map.
-			// Collection<V> values()						
+			// Collection<V> values()	
+			*/					
 		};				
 	}
 }
 
-#endif // JAVA_UTIL_MAP
+#endif // JAVA_UTIL_HASHMAP
 

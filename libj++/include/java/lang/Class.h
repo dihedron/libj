@@ -18,7 +18,7 @@ namespace java {
 
 		class Interface;
 
-		class Class : public Object {
+		class Class : extends Object {
 		public:
 
 			/// Returns a reference to the shared Class object.

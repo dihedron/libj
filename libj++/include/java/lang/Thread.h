@@ -18,7 +18,7 @@
 
 namespace java {
 	namespace lang {
-		class Thread : public Object, public Runnable {
+		class Thread : extends Object, implements Runnable {
 		public:
 			/// Returns a reference to the shared Class object.
 			///

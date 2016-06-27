@@ -14,7 +14,7 @@
 
 namespace java {
 	namespace lang {
-		class Number : public Object {
+		class Number : extends Object {
 		public:
 			/// Returns a reference to the shared Class object.
 			///

@@ -1,12 +1,11 @@
  /*
- * Iterator.cc
+ * Map.cc
  * Copyright (C) 2016 Andrea Funto' <dihedron.dev@gmail.com>
  * See LICENSE for details and terms of use.
  */
 
-#include <java/util/Iterator.h>
+#include <java/util/Map.h>
 #include <java/lang/Interface.h>
-#include <VM.h>
 
 namespace java {
 	namespace util {
@@ -14,8 +13,8 @@ namespace java {
 		using namespace java::lang;
 
 		template <>
-		Interface const & Iterator<Void>::klass() {
-			static const Interface klass("java.util.Iterator");
+		Interface const & Map<Void, Void>::klass() {
+			static const Interface klass("java.util.Map");
 			return klass;
 		}
 	}

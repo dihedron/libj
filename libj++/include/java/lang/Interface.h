@@ -12,7 +12,7 @@
 namespace java {
 	namespace lang {
 
-		class Interface : public Class {
+		class Interface : extends Class {
 		public:
 
 			/// Returns a reference to the shared Class object.

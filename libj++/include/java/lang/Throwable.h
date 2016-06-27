@@ -13,7 +13,7 @@
 
 namespace java {
 	namespace lang {
-		class Throwable : public Object, public java::io::Serializable {
+		class Throwable : extends Object, implements java::io::Serializable {
 		public:
 
 			/// Returns a reference to the shared Interface object.

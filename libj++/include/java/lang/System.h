@@ -24,7 +24,7 @@ namespace java {
 		/// hierarchy; each class must inherit from Object, and
 		/// gets some methgod for free, such as hashCode() and
 		/// toString().
-		class System : public Object {
+		class System : extends Object {
 		public:
 
 			/// Returns a reference to the shared Class object.

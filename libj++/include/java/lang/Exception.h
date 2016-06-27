@@ -11,7 +11,7 @@
 
 namespace java {
 	namespace lang {
-		class Exception : public Throwable {
+		class Exception : extends Throwable {
 		public:
 			/// Returns a reference to the shared Class object.
 			///

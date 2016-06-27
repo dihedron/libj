@@ -16,7 +16,7 @@
 namespace java {
 	namespace lang {
 		
-		class String : public Object {
+		class String : extends Object {
 		public:
 
 			/// Returns a reference to the shared Class object.
