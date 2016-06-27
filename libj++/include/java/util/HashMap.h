@@ -11,6 +11,8 @@
 #include <java/lang/Cloneable.h>
 #include <java/io/Serializable.h>
 
+#include <unordered_map>
+
 namespace java {
 	namespace util {
 		/// A pure virtual class implementing the Map interface.
@@ -34,7 +36,7 @@ namespace java {
 			HashMap() { }
 
 			/// Destructor.
-			virtual ~HashMap();
+			virtual ~HashMap() { }
 
 			/// Returns the object's class.
 			/// 
@@ -44,38 +46,23 @@ namespace java {
 				return HashMap::klass(); 
 			}			
 
-		protected:
-			
-/*
-			/// Returns a reference to the shared Interface object.
-			///
-			/// Returns the shared reference to the Interface object for 
-			/// this interface; all object share the same instance, which 
-			/// is a local static constant object: this makes sure that 
-			/// the Interface object is initialised as soon as this interface
-			/// is referenced, and that there is no problem with concurrent
-			/// access since it can only be instantiated once (see 
-			/// Scott Meyers, Effective C++, Item 4).
-			/// \return a reference to the shared Interface object.
-			static java::lang::Interface const & klass();				
-
 			/// Removes all of the mappings from this map.
 			///
 			/// Removes all of the mappings from this map; this operation is
 			/// optional and may not be implemented.
-			virtual void clear() = 0;
+			virtual void clear() { }
 
 			/// Returns whether the map is empty.
 			///
 			/// Returns true if this map contains no key-value mappings.
 			/// \return whether the map is empty.
-			virtual jboolean isEmpty() const = 0;
+			virtual jboolean isEmpty() const { return true; };
 
 			/// Returns the number of entries in this map.
 			///
 			/// Returns the number of key-value mappings in this map.
 			/// \return the number of key-value mappings in this map.
-			virtual jint size() const = 0;			
+			virtual jint size() const { return 0; }			
 
 			/// Returns the value corresponding to the given key, if any.
 			///
@@ -85,7 +72,7 @@ namespace java {
 			/// constant, conforming to Java semantics.
 			/// \param the key to look up.
 			/// \return a pointer to the value if found, nullptr otherwise.
-			virtual V * get(K const & key) const = 0;
+			virtual V * get(K const & key) const { return nullptr; }
 			
 			/// Associates the specified value with the specified key in this map.
 			///
@@ -95,14 +82,14 @@ namespace java {
 			/// \param key the key under which to store the value.
 			/// \param value the value to store; it can be nullptr.
 			/// \return the previous value, or nullptr.
-			virtual V * put(K const & key, V * value) = 0;
+			virtual V * put(K const & key, V * value) { return nullptr; }
 
 			/// Copies the other's map entries into this.
 			///
 			/// Copies all of the mappings from the specified map to this map;
 			/// this operation is optional.
 			/// \param map the map to merge with this one.			
-			virtual void putAll(Map<typename K, typename V> const & map) = 0:
+			//virtual void putAll(Map<typename K, typename V> const & map) { }
 
 			/// Removes the mapping under the given key, if any.
 			///
@@ -110,7 +97,7 @@ namespace java {
 			/// this operatios is optional.
 			/// \param the key of the mapping to remove.
 			/// \return the vaòue associated with the given mapping, or nullptr.
-			virtual V * remove(K const & key) = 0;
+			virtual V * remove(K const & key) { return nullptr; }
 
 			/// Returns true if this map contains a mapping for the specified key.
 			///
@@ -119,7 +106,7 @@ namespace java {
 			/// a mapping for the given value.
 			/// \param key the key to be looked for in the map.
 			/// \return true if this map contains a mapping for the given key.
-			virtual jboolean containsKey(K const & key) const = 0;
+			virtual jboolean containsKey(K const & key) const { return false; }
 
 			/// Returns true if this map maps one or more keys to the specified value.
 			///
@@ -127,14 +114,16 @@ namespace java {
 			/// the same value can be mapped to multiple keys.
 			/// \param value the value to be looked under the map's keys.
 			/// \return true if this map maps one or more keys to the given value.
-			virtual jboolean containsValue(V const & value) const = 0;
+			virtual jboolean containsValue(V const & value) const { return false; }
 
 			// TODO: Returns a Set view of the keys contained in this map.
 			// Set<K> keySet()
 
 			// TODO: Returns a Collection view of the values contained in this map.
 			// Collection<V> values()	
-			*/					
+			
+		private:
+			std::unordered_map<K, V> map_;				
 		};				
 	}
 }

@@ -17,5 +17,7 @@ namespace java {
 			static const Class klass("java.util.HashMap", &AbstractMap<Void, Void>::klass(), { &Serializable::klass(), &Cloneable::klass() });
 			return klass;
 		}
+
+		
 	}
 }

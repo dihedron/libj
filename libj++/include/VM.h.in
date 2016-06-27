@@ -70,6 +70,20 @@ public:
 	~Void() { }
 };
 
+#include <unordered_map>
+
+namespace std {
+	template <>
+	struct hash<Void> {
+		typedef size_t result_type;
+		typedef Void argument_type;
+ 
+		size_t operator () (Void const & k) const {
+    		return hash<int>()(0);
+  		}
+	}; 
+}
+
 //
 // LANGUAGE EXTENSIONS 
 //
