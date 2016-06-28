@@ -50,19 +50,25 @@ namespace java {
 			///
 			/// Removes all of the mappings from this map; this operation is
 			/// optional and may not be implemented.
-			virtual void clear() { }
+			virtual void clear() { 
+				map_.clear();
+			}
 
 			/// Returns whether the map is empty.
 			///
 			/// Returns true if this map contains no key-value mappings.
 			/// \return whether the map is empty.
-			virtual jboolean isEmpty() const { return true; };
+			virtual jboolean isEmpty() const { 
+				return map_.empty(); 
+			}
 
 			/// Returns the number of entries in this map.
 			///
 			/// Returns the number of key-value mappings in this map.
 			/// \return the number of key-value mappings in this map.
-			virtual jint size() const { return 0; }			
+			virtual jint size() const { 
+				return map_.size(); 
+			}			
 
 			/// Returns the value corresponding to the given key, if any.
 			///
@@ -72,7 +78,9 @@ namespace java {
 			/// constant, conforming to Java semantics.
 			/// \param the key to look up.
 			/// \return a pointer to the value if found, nullptr otherwise.
-			virtual V * get(K const & key) const { return nullptr; }
+			virtual V * get(K const & key) const { 
+				return nullptr; 
+			}
 			
 			/// Associates the specified value with the specified key in this map.
 			///
@@ -97,7 +105,10 @@ namespace java {
 			/// this operatios is optional.
 			/// \param the key of the mapping to remove.
 			/// \return the vaòue associated with the given mapping, or nullptr.
-			virtual V * remove(K const & key) { return nullptr; }
+			virtual V * remove(K const & key) {
+				//V * value = map_. 
+				return nullptr; 
+			}
 
 			/// Returns true if this map contains a mapping for the specified key.
 			///
@@ -106,7 +117,9 @@ namespace java {
 			/// a mapping for the given value.
 			/// \param key the key to be looked for in the map.
 			/// \return true if this map contains a mapping for the given key.
-			virtual jboolean containsKey(K const & key) const { return false; }
+			virtual jboolean containsKey(K const & key) const { 
+				return map_.count(key) > 0; 
+			}
 
 			/// Returns true if this map maps one or more keys to the specified value.
 			///
