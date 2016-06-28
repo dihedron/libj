@@ -107,7 +107,7 @@ void VM::initialise() {
 
 	std::cout << std::endl;
 	std::cout << "    +-------------------------------+" << std::endl;
-	std::cout << "    |   VM version " << VM::major() << "." << VM::minor() << "." << VM::patch << " started.   |" << std::endl;
+	std::cout << "    |   VM version " << VM::major() << "." << VM::minor() << "." << VM::patch() << " started.   |" << std::endl;
 	std::cout << "    +-------------------------------+" << std::endl;
 	std::cout << std::endl;
 }
@@ -120,7 +120,7 @@ void VM::finalise() {
 
 	std::cout << std::endl;
 	std::cout << "    +-------------------------------+" << std::endl;
-	std::cout << "    |  VM version " << VM::major() << "." << VM::minor() << "." << VM::patch << " terminated. |" << std::endl;
+	std::cout << "    |  VM version " << VM::major() << "." << VM::minor() << "." << VM::patch() << " terminated. |" << std::endl;
 	std::cout << "    +-------------------------------+" << std::endl;
 	std::cout << std::endl;
 	// do memory dump if in memory debug mode
