@@ -21,19 +21,19 @@ namespace java {
 		}
 		
 		String String::operator+(jbyte value) const {
-			return valueOf(value);
+			return *this + valueOf(value);
 		}
 
 		String String::operator+(jshort value) const {
-			return valueOf(value);
+			return *this + valueOf(value);
 		}
 
 		String String::operator+(jint value) const {
-			return valueOf(value);
+			return *this + valueOf(value);
 		}
 
 		String String::operator+(jlong value) const {
-			return valueOf(value);
+			return *this + valueOf(value);
 		}
 		
 		std::ostream & operator<<(std::ostream & os, String const & string) {

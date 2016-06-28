@@ -151,10 +151,22 @@ static void testThreads() {
 }
 
 static void testHashMap() {
+	std::cout << "---------------- TEST HASHMAP ----------------" << std::endl;
 	HashMap<String, String> map;
-	map.put("Hallo", "Hallo");
+	map.put("Hallo", "World");
 	String * s = map.get("Hallo");
-	std::cout << "value is " << *s << std::endl;
+	std::cout << "value for 'Hallo' is '" << *s << "' (expected 'World')" << std::endl;
+	
+	std::cout << "----------------------------------------------" << std::endl;
+
+	HashMap<Integer, String> map2;
+	for(jint i = 0; i < 100; ++i) {
+		map.put(i, String("number_") + i);
+	}
+
+	std::cout << "map2[24] = '" << *map.get(24) << "' (expected 'number 24')" << std::endl;
+
+	std::cout << "---------------- TEST HASHMAP ----------------" << std::endl;
 }
 
 /*

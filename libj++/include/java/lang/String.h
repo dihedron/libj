@@ -51,6 +51,13 @@ namespace java {
 			/// \param string the C-style string to copy from.
 			String(const char * string) : value_(string) { }  
 
+			/// Constructor.
+			/// 
+			/// Creates a string from the given value; for supported types
+			/// see documentation for std::to_string().
+			/// \param value the value to use for initialising the String.
+			template<typename T> String(T value) : value_(std::to_string(value)) { }
+
 			/// Returns the last occurrence of the specified character.
 			/// 
 			/// Returns the index within this string of the last occurrence 
