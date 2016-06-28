@@ -203,7 +203,10 @@ namespace java {
 			String(std::string const & string) : value_(string) { } 
 	
 			/// The uderlying String's value.
-			std::string value_;   
+			std::string value_;  
+
+			/// Friendship is necessary to compute the hash (see below).
+			friend struct std::hash<String>;  
 		};
 
 		template <typename T> 
@@ -213,6 +216,21 @@ namespace java {
 			return String(ss.str());
 		}				
 	}
+}
+
+namespace std {
+	/// The hash object for Strings; this is necessary to use Strings
+	/// as keys in unordered containers such as std::unordered_map,
+	/// std::unordered_set and std::unordered_multimap.
+	template <>
+	struct hash<java::lang::String> {
+		typedef size_t result_type;
+		typedef java::lang::String argument_type;
+ 
+		size_t operator () (java::lang::String const & k) const {
+			return std::hash<std::string>()(k.value_);
+  		}
+	}; 
 }
 
 #endif // JAVA_LANG_STRING

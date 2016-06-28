@@ -132,9 +132,28 @@ namespace java {
 		private:
 			/// The underlying 64-bits value.
 			jlong value_;
+
+			/// Friendship is needed for hash calculation (see below).
+			friend struct std::hash<Long>;
 		};
 	}
 }
+
+namespace std {
+	/// The hash object for Longs; this is necessary to use Longs
+	/// as keys in unordered containers such as std::unordered_map,
+	/// std::unordered_set and std::unordered_multimap.
+	template <>
+	struct hash<java::lang::Long> {
+		typedef size_t result_type;
+		typedef java::lang::Long argument_type;
+ 
+		size_t operator () (java::lang::Long const & k) const {
+			return std::hash<long long>()(k.value_);
+  		}
+	}; 
+}
+
 
 
 #endif // JAVA_LANG_LONG

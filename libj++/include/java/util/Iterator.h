@@ -49,7 +49,15 @@ namespace java {
 			/// Removes from the underlying collection the last element 
 			/// returned by this iterator (optional operation).			
 			virtual void remove() = 0;
-		};				
+		};	
+
+		using namespace lang;
+
+		template <typename T>
+		Interface const & Iterator<T>::klass() {
+			static const Interface klass("java.util.Iterator");
+			return klass;
+		}
 	}
 }
 

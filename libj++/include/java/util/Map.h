@@ -26,15 +26,15 @@ namespace java {
 			/// access since it can only be instantiated once (see 
 			/// Scott Meyers, Effective C++, Item 4).
 			/// \return a reference to the shared Interface object.
-			static java::lang::Interface const & klass();			
+			static java::lang::Interface const & klass();
 
-			interface Entry {
+/*			interface Entry {
 			public:
 				Entry(K const & key, V * value);
 
 				virtual ~Entry() { } 
 			};
-
+*/
 			/// Destructor.
 			virtual ~Map() { }			
 
@@ -64,7 +64,7 @@ namespace java {
 			/// constant, conforming to Java semantics.
 			/// \param the key to look up.
 			/// \return a pointer to the value if found, nullptr otherwise.
-			virtual V * get(K const & key) const = 0;
+			virtual V * get(K const & key) = 0;
 			
 			/// Associates the specified value with the specified key in this map.
 			///
@@ -74,7 +74,7 @@ namespace java {
 			/// \param key the key under which to store the value.
 			/// \param value the value to store; it can be nullptr.
 			/// \return the previous value, or nullptr.
-			virtual V * put(K const & key, V * value) = 0;
+			virtual V * put(K const & key, V const & value) = 0;
 
 			/// Copies the other's map entries into this.
 			///
@@ -115,6 +115,14 @@ namespace java {
 			// TODO: Returns a Collection view of the values contained in this map.
 			// Collection<V> values()						
 		};				
+
+		using namespace lang;
+
+		template <typename K, typename V>
+		Interface const & Map<K, V>::klass() {
+			static const Interface klass("java.util.Map");
+			return klass;
+		}	
 	}
 }
 

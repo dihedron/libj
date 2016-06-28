@@ -132,7 +132,15 @@ namespace java {
 			// TODO: Returns a Collection view of the values contained in this map.
 			// Collection<V> values()	
 			*/					
-		};				
+		};	
+
+		using namespace lang;
+
+		template<typename K, typename V>
+		Class const & AbstractMap<K, V>::klass() {
+			static const Class klass("java.util.AbstractMap", &Object::klass(), { &Map<K, V>::klass() });
+			return klass;
+		}					
 	}
 }
 

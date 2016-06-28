@@ -62,28 +62,6 @@ private:
 	VM();	
 }; 
 
-/// A class to work with pseudo-reflection of templates, which need
-/// a concrete type to be instantiated. Void plays the trick.
-class Void {
-public:
-	Void() { }
-	~Void() { }
-};
-
-#include <unordered_map>
-
-namespace std {
-	template <>
-	struct hash<Void> {
-		typedef size_t result_type;
-		typedef Void argument_type;
- 
-		size_t operator () (Void const & k) const {
-    		return hash<int>()(0);
-  		}
-	}; 
-}
-
 //
 // LANGUAGE EXTENSIONS 
 //

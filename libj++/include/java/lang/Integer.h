@@ -127,8 +127,26 @@ namespace java {
 
 		private:
 			jint value_;
+
+			/// Friendship is needed for calculation of hash.
+			friend struct std::hash<Integer>;
 		};
 	}
+}
+
+namespace std {
+	/// The hash object for Integers; this is necessary to use Integers
+	/// as keys in unordered containers such as std::unordered_map,
+	/// std::unordered_set and std::unordered_multimap.
+	template <>
+	struct hash<java::lang::Integer> {
+		typedef size_t result_type;
+		typedef java::lang::Integer argument_type;
+ 
+		size_t operator () (java::lang::Integer const & k) const {
+			return std::hash<int>()(k.value_);
+  		}
+	}; 
 }
 
 

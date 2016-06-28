@@ -12,6 +12,7 @@
 #include <java/io/Serializable.h>
 
 #include <unordered_map>
+#include <memory>
 
 namespace java {
 	namespace util {
@@ -30,10 +31,7 @@ namespace java {
 			/// access since it can only be instantiated once (see 
 			/// Scott Meyers, Effective C++, Item 4).
 			/// \return a reference to the shared Class object.
-			static java::lang::Class const & klass(); 
-
-			/// Constructor; only subclasses can instantiate an AbstractMap.
-			HashMap() { }
+			static java::lang::Class const & klass();
 
 			/// Destructor.
 			virtual ~HashMap() { }
@@ -78,8 +76,9 @@ namespace java {
 			/// constant, conforming to Java semantics.
 			/// \param the key to look up.
 			/// \return a pointer to the value if found, nullptr otherwise.
-			virtual V * get(K const & key) const { 
-				return nullptr; 
+			virtual V * get(K const & key) { 
+				std::shared_ptr<V> value(map_[key]);
+				return value.get(); 
 			}
 			
 			/// Associates the specified value with the specified key in this map.
@@ -90,7 +89,11 @@ namespace java {
 			/// \param key the key under which to store the value.
 			/// \param value the value to store; it can be nullptr.
 			/// \return the previous value, or nullptr.
-			virtual V * put(K const & key, V * value) { return nullptr; }
+			virtual V * put(K const & key, V const & value) {
+				std::shared_ptr<V> previous(map_[key]);
+				map_[key] = std::shared_ptr<V>(new V(value)); 
+				return previous.get(); 
+			}
 
 			/// Copies the other's map entries into this.
 			///
@@ -106,8 +109,9 @@ namespace java {
 			/// \param the key of the mapping to remove.
 			/// \return the vaòue associated with the given mapping, or nullptr.
 			virtual V * remove(K const & key) {
-				//V * value = map_. 
-				return nullptr; 
+				std::shared_ptr<V> previous(map_[key]);
+				map_.erase(key);
+				return previous.get(); 
 			}
 
 			/// Returns true if this map contains a mapping for the specified key.
@@ -127,7 +131,13 @@ namespace java {
 			/// the same value can be mapped to multiple keys.
 			/// \param value the value to be looked under the map's keys.
 			/// \return true if this map maps one or more keys to the given value.
-			virtual jboolean containsValue(V const & value) const { return false; }
+			virtual jboolean containsValue(V const & value) const {
+				jboolean found = false;
+				for(auto& entry : map_) {					
+    				std::cout << entry.first << ": " << entry.second << std::endl;
+				} 
+				return false; 
+			}
 
 			// TODO: Returns a Set view of the keys contained in this map.
 			// Set<K> keySet()
@@ -136,9 +146,18 @@ namespace java {
 			// Collection<V> values()	
 			
 		private:
-			std::unordered_map<K, V> map_;				
+			std::unordered_map<K, std::shared_ptr<V>> map_;				
 		};				
-	}
+	
+
+		using namespace lang;
+
+		template<typename K, typename V>
+		Class const & HashMap<K, V>::klass() {
+			static const Class klass("java.util.HashMap", &AbstractMap<K, V>::klass(), { &Serializable::klass(), &Cloneable::klass() });
+			return klass;
+		}
+	} 
 }
 
 #endif // JAVA_UTIL_HASHMAP

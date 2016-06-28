@@ -17,8 +17,10 @@
 #include <java/lang/Thread.h>
 #include <java/lang/CloneNotSupportedException.h>
 #include <java/lang/UnsupportedOperationException.h>
+#include <java/util/HashMap.h>
 
 using namespace java::lang;
+using namespace java::util;
 
 static void testClasses() {
 	std::cout << "---------------- TEST CLASSES ----------------" << std::endl;
@@ -148,6 +150,13 @@ static void testThreads() {
 	}
 }
 
+static void testHashMap() {
+	HashMap<String, String> map;
+	map.put("Hallo", "Hallo");
+	String * s = map.get("Hallo");
+	std::cout << "value is " << *s << std::endl;
+}
+
 /*
  * 
  */
@@ -162,6 +171,8 @@ int main(int argc, char** argv) {
     testIntegers();
 
 	testThreads();
+
+	testHashMap();
 
     std::cout << "current time millis: " << System::currentTimeMillis() << std::endl;
     
