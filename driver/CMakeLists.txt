@@ -20,9 +20,15 @@ elseif(CMAKE_USE_WIN32_THREADS_INIT)
 endif()
 
 
+# Recursively look up source and header files in the 
+# current directory
+file(GLOB_RECURSE DRIVER_SRCS "*.cc")
+file(GLOB_RECURSE DRIVER_HDRS "*.h")
+
 # Add the executable, which is only a driver to test
 # libj++ capabilities (against which it is linked)
-add_executable(driver main.cc)
+#add_executable(driver main.cc)
+add_executable(driver ${DRIVER_SRCS} ${DRIVER_HDRS})
 
 target_link_libraries (driver j++ ${CMAKE_THREAD_LIBS_INIT})
 
