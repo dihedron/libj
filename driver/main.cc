@@ -8,6 +8,8 @@
 #include <iostream>
 #include <vector>
 
+#include "memleak.h"
+
 #include <VM.h>
 
 #include <java/lang/Class.h>
