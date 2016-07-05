@@ -1,0 +1,192 @@
+
+#include "memleak.h"
+
+#if DETECT_MEMLEAKS
+
+	#include <iostream>
+	#include <iomanip>
+	#include <map>
+	#include <cstring>
+	#include <mutex>
+	#include <java/lang/OutOfMemoryError.h>
+
+	// Each time a meory block is allocated, an additional integer is
+	// prepended to store the memory block id, which is an atomic counter
+	// incremented each time a new block is allocated. The actual block 
+	// information is stored in a std::map having the given integer as
+	// the key and a struct containing info on the source file and  
+
+	class GC {
+	public:
+    	GC(){}
+    	GC & operator= (GC const &) = delete;
+
+    	void add(void * pointer, std::string const & block) {
+        	printf("2\n");
+			std::cout << "adding pair " << pointer << " -> " << block << std::endl;//std::to_string(size) << "@" << position << std::endl; 
+			{
+				std::lock_guard<std::mutex> lock(mutex_);
+				blocks_[pointer] = block;
+			}
+			// if you have many threads trying to access the 
+			// data at same time, this will wake one thread only
+        	//condition.notify_one();
+    	}
+
+		void remove(void * pointer) {
+        	std::lock_guard<std::mutex> lock(mutex_);
+			blocks_.erase(pointer);
+		} 
+/*
+    	void Get(T& value){
+        	std::unique_lock<std::mutex> lock(mutex_);
+        	//condition.wait(lock, [this]{ return !blocks_.empty(); }); // in this case it waits if queue is empty, if not needed  you can remove this line
+        	value = data.front();
+        	data.pop();
+        	//lk.unlock();
+    	}
+		*/
+
+	private:
+    	std::mutex 						mutex_;
+    	std::map<void *, std::string> 	blocks_; 
+    	//std::condition_variable 		condition_;
+	};
+
+	static GC gc;
+
+/*
+	static void allocate(void * pointer, size_t size, char const * filename, unsigned long line) {
+		std::cout << "allocated " << size << " bytes at address " << pointer;
+		if(filename != nullptr) {
+			std::cout << " (source: " << filename << ":" << std::dec << line << ")";
+		} 
+		gc.add(pointer, size, filename, line);
+		std::cout << std::endl;
+
+	}
+
+	static void reallocate(void * oldpointer, void * newpointer, size_t size, char const * filename, unsigned long line) {
+		std::cout << "reallocated " << size << " bytes from address " << oldpointer << " to address " << newpointer;
+		if(filename != nullptr) {
+			std::cout << " (source: " << filename << ":" << std::dec << line << ")";
+		} 
+		gc.remove(oldpointer);
+		gc.add(newpointer, size, filename, line);
+		std::cout << std::endl;
+	}
+
+	static void dispose(void * pointer) {
+		std::cout << "freed memory at address " << pointer << std::endl;
+		gc.remove(pointer);
+	}
+*/	
+#undef  malloc
+#define malloc(s)	malloc(s)
+	static std::string build_block_info(size_t size, char const * filename = nullptr, unsigned long line = 0) {
+		std::string block(std::to_string(size));		
+		do {
+			if(filename == nullptr) {
+				block.append("@unknown location");
+				break;
+			}
+			char const * file = std::strrchr(filename, '/');
+			if(file != nullptr) {
+				block.append("@").append(file + 1).append(":").append(std::to_string(line));
+				break;
+			}
+			file = std::strrchr(filename, '\\');
+			if(file != nullptr) {
+				block.append("@").append(file + 1).append(":").append(std::to_string(line));
+				break;
+			}
+			block.append("@").append(filename).append(":").append(std::to_string(line));			
+		} while(false);
+		std::cout << "blok info: " << block << std::endl;
+		return block;
+	}
+#undef  malloc
+#define malloc(s)	__malloc(s, __FILE__, __LINE__)
+
+
+	void * __malloc(size_t size, char const * filename = nullptr, unsigned long line = 0) {
+		void * pointer;
+		printf("malloc\n");
+	
+		#undef  malloc
+		#define malloc(s)	malloc(s)
+
+		pointer = (void *) malloc(size);
+		gc.add(pointer, build_block_info(size, filename, line));
+	  	//allocate(pointer, size, filename, line);
+	
+		#undef  malloc
+		#define malloc(s)	__malloc(s, __FILE__, __LINE__)
+	  
+	  	return pointer;
+	}
+
+	void * __calloc(size_t count, size_t size, char const * filename = nullptr, unsigned long line = 0) {
+		void * pointer;
+	
+		#undef  calloc
+		#define calloc(s, t)	calloc(s, t)
+
+	  	pointer = (void *) calloc(count, size);
+		gc.add(pointer, build_block_info(size, filename, line));
+	  	//allocate(pointer, size * count, filename, line);
+	
+		#undef  calloc
+		#define calloc(s, t)	__calloc(s, t, __FILE__, __LINE__)
+	  
+	  	return pointer;
+	}
+	
+	void * __realloc(void * oldpointer, size_t size, char const * filename = nullptr, unsigned long line = 0) {
+	
+		#undef  realloc
+		#define realloc(s, t)	realloc(s, t)
+
+		
+	  	void * newpointer = (void *) realloc(oldpointer, size);		
+	  	//reallocate(oldpointer, newpointer, size, filename, line);
+		gc.remove(oldpointer);
+		gc.add(newpointer, build_block_info(size, filename, line));
+	
+		#undef  realloc
+		#define realloc(s, t)	__realloc(s, t, __FILE__, __LINE__)
+	  
+	  	return newpointer;
+	}
+
+	void __free(void * pointer)	{		
+
+		#undef  free
+		#define free(s)		free(s)
+
+		free(pointer);
+		//dispose(pointer);
+		gc.remove(pointer);
+
+		#undef  free
+		#define free(s)		__free(s)
+	}	
+	
+	void * operator new(size_t size) {		
+ 		void * p = __malloc(size); 
+ 		if(p != nullptr) {
+			//std::cout << "* memleak: allocated " << size << " bytes from heap at address " << p << std::endl;
+			return p;
+		}
+		// ANSI/ISO compliant behavior would require throwning std::bad_alloc()
+		throw java::lang::OutOfMemoryError(); 
+	}
+
+	void operator delete (void *p) noexcept(true) {
+		//std::cout << "* memleak: freeing memory at address " << p << std::endl;
+ 		__free(p);
+	}	
+
+	// see http://en.cppreference.com/w/cpp/memory/new/operator_new	
+ 
+#endif // DETECT_MEMLEAKS

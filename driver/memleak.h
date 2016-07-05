@@ -2,7 +2,7 @@
 #define MEMLEAK_H
 
 // Set to 1 to enable memory leak detection
-#define DETECT_MEMLEAKS 0
+#define DETECT_MEMLEAKS 1
 
 #if DETECT_MEMLEAKS
 	//

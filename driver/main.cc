@@ -175,7 +175,7 @@ static void testHashMap() {
  * 
  */
 int main(int argc, char** argv) {
-
+/*
 	VM::initialise();
     
     testClasses();
@@ -187,9 +187,23 @@ int main(int argc, char** argv) {
 	testThreads();
 
 	testHashMap();
+*/
+	printf("main: 1\n");
+	void * pointer = malloc(1024);
+	printf("main: 2\n");
+	pointer = realloc(pointer, 2048);
+	printf("main: 3\n");
+	free(pointer);
+	printf("main: 4\n");
+	return 0;
 
     std::cout << "current time millis: " << System::currentTimeMillis() << std::endl;
-    
+
+
+	std::cout << "--------------------------------" << std::endl;
+	String s("pippo"); 
+	std::cout << "--------------------------------" << std::endl;
+
 	VM::finalise();
 
     System::exit(0);
