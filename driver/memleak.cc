@@ -46,7 +46,7 @@
 					break;
 				}
 			} while(false);
-			printf("block { size: %lu, source: %s, line: %lu }\n", block.size, block.source, block.line);
+			printf("block { size: %u, source: %s, line: %lu }\n", block.size, block.source, block.line);
 			
         	printf("GC::add: 2\n"); 
 			{
